@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/settings_title_general">
+
+        <SwitchPreference
+            android:title="@string/settings_title_upper_case"
+            android:key="@string/key_upper_case"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_settings_upper_case" />
+
+        <SwitchPreference
+            android:title="@string/settings_title_multiline"
+            android:key="@string/key_multiline"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_settings_multiline" />
+
+        <SwitchPreference
+            android:title="@string/settings_title_save_result_to_history"
+            android:key="@string/key_save_result_to_history"
+            android:defaultValue="true"
+            android:icon="@drawable/ic_history" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:key="@string/key_category_app"
+        android:title="@string/settings_title_app">
+
+        <SwitchPreference
+            android:title="@string/settings_title_app_file_manager"
+            android:key="@string/key_inner_file_manager"
+            android:defaultValue="false"
+            android:icon="@drawable/ic_settings_file_manager" />
+
+        <SwitchPreference
+            android:title="@string/settings_title_vibration"
+            android:key="@string/key_vibrate"
+            android:defaultValue="true"
+            android:icon="@drawable/ic_settings_vibration" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_title_privacy">
+
+        <Preference
+            android:title="@string/settings_title_privacy_policy"
+            android:key="@string/key_privacy_policy"
+            android:icon="@drawable/ic_settings_privacy_policy" />
+
+        <Preference
+            android:title="@string/settings_title_export_user_data"
+            android:key="@string/key_export_user_data"
+            android:icon="@drawable/ic_settings_export_user_data" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_title_interface">
+
+        <Preference
+            android:title="@string/settings_title_language"
+            android:key="@string/key_language"
+            android:icon="@drawable/ic_settings_language" />
+
+        <Preference
+            android:title="@string/settings_title_theme"
+            android:key="@string/key_theme"
+            android:icon="@drawable/ic_settings_theme" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_title_support">
+
+        <Preference
+            android:title="@string/settings_title_help_with_translation"
+            android:key="@string/key_help_with_translation"
+            android:icon="@drawable/ic_settings_help_with_translation" />
+
+        <Preference
+            android:title="@string/settings_title_rate_app"
+            android:key="@string/key_rate_app"
+            android:icon="@drawable/ic_settings_rate_app" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_title_about">
+
+        <Preference
+            android:title="@string/settings_title_author"
+            android:key="@string/key_author"
+            android:summary="@string/common_app_author"
+            android:icon="@drawable/ic_settings_author" />
+
+        <Preference
+            android:title="@string/settings_title_libraries"
+            android:key="@string/key_libraries"
+            android:icon="@drawable/ic_settings_libraries" />
+
+        <Preference
+            android:title="@string/settings_title_version"
+            android:key="@string/key_version"
+            android:icon="@drawable/ic_settings_version" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

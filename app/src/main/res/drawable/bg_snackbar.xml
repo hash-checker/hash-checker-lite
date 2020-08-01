@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/bg_bottom_sheet_rounded_corners"
+    android:insetTop="@dimen/radius_snackbar_corners"
+    android:insetRight="@dimen/radius_snackbar_corners"
+    android:insetLeft="@dimen/radius_snackbar_corners"
+    android:insetBottom="@dimen/radius_snackbar_corners" />

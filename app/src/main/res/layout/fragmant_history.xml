@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:arv="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fl_history"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorBackground">
+
+    <com.smlnskgmail.jaman.adaptiverecyclerview.AdaptiveRecyclerView
+        android:id="@+id/rv_history_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="LinearLayoutManager" />
+
+    <com.smlnskgmail.jaman.adaptiverecyclerview.AdaptiveMessageView
+        android:id="@+id/ll_history_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        arv:message_image="@drawable/ic_history"
+        arv:message_image_tint="?attr/colorCommonUnselected"
+        arv:message_text="@string/history_empty_view_message"
+        arv:message_text_color="?attr/colorCommonUnselected" />
+
+    <ProgressBar
+        android:id="@+id/pb_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+</FrameLayout>

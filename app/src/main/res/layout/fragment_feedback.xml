@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/common_margin_2"
+    android:background="?attr/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_feedback_icon"
+            android:layout_width="@dimen/icon_size_email"
+            android:layout_height="@dimen/icon_size_email"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_email"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/et_feedback_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="?attr/colorCommonText"
+            android:padding="@dimen/common_margin"
+            android:hint="@string/feedback_message"
+            android:lines="5"
+            android:maxLines="10"
+            android:textColor="?attr/colorCommonText"
+            android:textColorHint="?attr/colorCommonUnselected"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine" />
+
+        <LinearLayout style="@style/AppFeedbackDeviceItemLayout">
+
+            <TextView
+                android:id="@+id/tv_hash_checker_title"
+                style="@style/AppFeedbackTitle"
+                android:text="@string/feedback_hash_checker_title" />
+
+            <TextView
+                android:id="@+id/tv_hash_checker_value"
+                style="@style/AppFeedbackValue" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/AppFeedbackDeviceItemLayout">
+
+            <TextView
+                android:id="@+id/tv_android_title"
+                style="@style/AppFeedbackTitle"
+                android:text="@string/feedback_android_title" />
+
+            <TextView
+                android:id="@+id/tv_android_value"
+                style="@style/AppFeedbackValue" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/AppFeedbackDeviceItemLayout">
+
+            <TextView
+                android:id="@+id/tv_manufacturer_title"
+                style="@style/AppFeedbackTitle"
+                android:text="@string/feedback_manufacturer" />
+
+            <TextView
+                android:id="@+id/tv_manufacturer_value"
+                style="@style/AppFeedbackValue" />
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/AppFeedbackDeviceItemLayout">
+
+            <TextView
+                android:id="@+id/tv_model_title"
+                style="@style/AppFeedbackTitle"
+                android:text="@string/feedback_model" />
+
+            <TextView
+                android:id="@+id/tv_model_value"
+                style="@style/AppFeedbackValue" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
