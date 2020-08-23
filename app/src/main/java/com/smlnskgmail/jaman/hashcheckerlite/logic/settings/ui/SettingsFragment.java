@@ -1,0 +1,239 @@
+package com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui;
+
+import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.preference.PreferenceFragmentCompat;
+
+import com.smlnskgmail.jaman.hashcheckerlite.BuildConfig;
+import com.smlnskgmail.jaman.hashcheckerlite.R;
+import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppSnackbar;
+import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppBackClickTarget;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.languages.LanguagesBottomSheet;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.themes.ThemesBottomSheet;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.weblinks.AuthorWebLinksBottomSheet;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.weblinks.PrivacyPolicyWebLinksBottomSheet;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.WebUtils;
+
+public class SettingsFragment extends PreferenceFragmentCompat implements AppBackClickTarget {
+
+    private ActionBar actionBar;
+    private FragmentManager fragmentManager;
+    private Context context;
+
+    @SuppressLint("ResourceType")
+    @Override
+    public void onCreatePreferences(
+            Bundle savedInstanceState,
+            String rootKey
+    ) {
+        addPreferencesFromResource(R.xml.settings);
+        fragmentManager = getActivity().getSupportFragmentManager();
+        context = getContext();
+
+        initializeActionBar();
+        initializeLanguageSettings();
+        initializeThemesSettings();
+        initializePrivacyPolicy();
+        initializeAuthorLinks();
+        initializeRateButton();
+        initializeHelpWithTranslationButton();
+        initializeAppVersionInfo();
+    }
+
+    private void initializeActionBar() {
+        actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(
+                ContextCompat.getDrawable(
+                        context,
+                        R.drawable.ic_arrow_back
+                )
+        );
+    }
+
+    private void initializeLanguageSettings() {
+        findPreference(getString(R.string.key_language))
+                .setOnPreferenceClickListener(preference -> {
+            LanguagesBottomSheet languagesBottomSheet = new LanguagesBottomSheet();
+            languagesBottomSheet.show(
+                    fragmentManager,
+                    languagesBottomSheet.getClass().getCanonicalName()
+            );
+            return false;
+        });
+    }
+
+    private void initializeThemesSettings() {
+        findPreference(getString(R.string.key_theme))
+                .setOnPreferenceClickListener(preference -> {
+            ThemesBottomSheet themesBottomSheet = new ThemesBottomSheet();
+            themesBottomSheet.show(
+                    fragmentManager,
+                    themesBottomSheet.getClass().getCanonicalName()
+            );
+            return false;
+        });
+    }
+
+    private void initializePrivacyPolicy() {
+        findPreference(getString(R.string.key_privacy_policy))
+                .setOnPreferenceClickListener(preference -> {
+                    PrivacyPolicyWebLinksBottomSheet privacyPolicyWebLinksBottomSheet
+                            = new PrivacyPolicyWebLinksBottomSheet();
+                    privacyPolicyWebLinksBottomSheet.show(
+                            fragmentManager,
+                            privacyPolicyWebLinksBottomSheet.getClass().getCanonicalName()
+                    );
+            return false;
+        });
+    }
+
+    private void showSnackbar(@NonNull String message) {
+        new AppSnackbar(
+                context,
+                getView(),
+                message,
+                UIUtils.getAccentColor(context)
+        ).show();
+    }
+
+    private void initializeAuthorLinks() {
+        findPreference(getString(R.string.key_author))
+                .setOnPreferenceClickListener(preference -> {
+            AuthorWebLinksBottomSheet authorWebLinksBottomSheet
+                    = new AuthorWebLinksBottomSheet();
+            authorWebLinksBottomSheet.show(
+                    fragmentManager,
+                    authorWebLinksBottomSheet.getClass().getCanonicalName()
+            );
+            return false;
+        });
+    }
+
+    private void initializeHelpWithTranslationButton() {
+        findPreference(getString(R.string.key_help_with_translation))
+                .setOnPreferenceClickListener(preference -> {
+            WebUtils.openWebLink(
+                    context,
+                    context.getString(R.string.web_link_help_with_translation)
+            );
+            return false;
+        });
+    }
+
+    private void initializeRateButton() {
+        findPreference(getString(R.string.key_rate_app))
+                .setOnPreferenceClickListener(preference -> {
+            openGooglePlay();
+            return false;
+        });
+    }
+
+    private void openGooglePlay() {
+        final String appPackageName = context.getPackageName();
+        Uri link;
+        try {
+            link = Uri.parse("market://details?id=" + appPackageName);
+            context.startActivity(
+                    new Intent(
+                            Intent.ACTION_VIEW,
+                            link
+                    )
+            );
+        } catch (ActivityNotFoundException e) {
+            try {
+                link = Uri.parse(
+                        "https://play.google.com/store/apps/details?id=" + appPackageName
+                );
+                context.startActivity(
+                        new Intent(
+                                Intent.ACTION_VIEW,
+                                link
+                        )
+                );
+            } catch (ActivityNotFoundException e2) {
+                L.e(e2);
+                showSnackbar(
+                        getString(R.string.message_error_start_google_play)
+                );
+            }
+        }
+    }
+
+    private void initializeAppVersionInfo() {
+        findPreference(getString(R.string.key_version)).setSummary(
+                String.format(
+                        "%s (%s)",
+                        BuildConfig.VERSION_NAME,
+                        BuildConfig.VERSION_CODE
+                )
+        );
+    }
+
+    @Override
+    public void onViewCreated(
+            @NonNull View view,
+            @Nullable Bundle savedInstanceState
+    ) {
+        super.onViewCreated(view, savedInstanceState);
+        setHasOptionsMenu(true);
+        view.setBackgroundColor(
+                UIUtils.getCommonBackgroundColor(
+                        context
+                )
+        );
+        setDividerHeight(0);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        UIUtils.setActionBarTitle(
+                actionBar,
+                R.string.menu_title_settings
+        );
+        actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(
+            Menu menu,
+            @NonNull MenuInflater inflater
+    ) {
+        menu.clear();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            getActivity().onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void appBackClick() {
+        UIUtils.removeFragment(
+                fragmentManager,
+                this
+        );
+    }
+
+}

@@ -15,11 +15,9 @@
     <dimen name="text_size_info">16sp</dimen>
     <dimen name="text_size_medium">18sp</dimen>
     <dimen name="text_size_large">20sp</dimen>
-    <dimen name="adaptive_message_view_text_size">20sp</dimen>
 
     <!-- icons -->
     <dimen name="icon_size_email">144dp</dimen>
-    <dimen name="icon_size_history_empty_view">72dp</dimen>
 
     <!-- rounded components -->
     <dimen name="round_button_height">42dp</dimen>

@@ -3,11 +3,9 @@
     <!-- menu -->
     <string name="menu_title_settings">Einstellungen</string>
     <string name="menu_title_feedback">Feedback</string>
-    <string name="menu_title_history">Verlauf</string>
     <!-- dialog titles -->
     <string name="title_dialog_enter_text">Text hinzufügen</string>
     <string name="title_warning_dialog">Warnung</string>
-    <string name="title_permission_dialog">Erlaubnis</string>
     <!-- messages -->
     <string name="message_exit">Zurück-Taste drücken, um Anwendung zu schließen</string>
     <string name="message_fill_fields">Jedes Feld für Abgleich ausfüllen</string>
@@ -16,30 +14,24 @@
     <string name="message_do_not_match_result">Keine Übereinstimmung!</string>
     <string name="message_generate_dialog">Hash wird generiert, bitte warten …</string>
     <string name="message_select_object">Auf \"Von\" tippen, um die gewünschte Quelle auszuwählen</string>
-    <string name="message_request_storage_permission_error">Kann nicht auf Dateisystem zugreifen! Bitte erneut versuchen.</string>
-    <string name="message_request_storage_permission_denied">Kann nicht auf Dateisystem zugreifen! Sie müssen zu den Einstellungen gehen und den Zugriff erlauben!</string>
     <string name="message_error_start_file_selector">Kann keinen Dateimanager finden...</string>
     <string name="message_error_start_google_play">Google Play-Dienste oder Webbrowser nicht gefunden!</string>
     <string name="message_email_app_chooser">Wähle Deine App zum Senden einer E-Mail</string>
     <string name="message_change_theme">Anwendung neu starten, um die Farbe zu ändern</string>
     <string name="message_change_language">Anwendung neu starten, um die Sprache zu ändern</string>
     <string name="message_invalid_selected_source">Kann keinen Hashwert generieren. Bitte ausgewählte Quelle überprüfen</string>
-    <string name="message_delete_all_history_items">Kompletten Verlauf löschen?</string>
     <!-- commons -->
     <string name="common_text">Text</string>
     <string name="common_file">Datei</string>
     <string name="common_add">Hinzufügen</string>
     <string name="common_ok">OK</string>
     <string name="common_cancel">Abbrechen</string>
-    <string name="common_again">Wiederholen</string>
-    <string name="common_date">Datum</string>
     <!-- actions -->
     <string name="action_from">Quelle</string>
     <string name="action_select">Aktion</string>
     <string name="action_exit_now">Beenden</string>
     <string name="action_generate">Generieren</string>
     <string name="action_compare">Vergleichen</string>
-    <string name="action_export_to_txt">Als .txt exportieren</string>
     <!-- themes -->
     <string name="title_theme_light">Hell</string>
     <string name="title_theme_dark">Dunkel</string>
@@ -50,21 +42,15 @@
     <string name="hint_input_text">Text hier</string>
     <!-- settings titles -->
     <string name="settings_title_general">Haupteinstellungen</string>
-    <string name="settings_title_app">Anwendung</string>
     <string name="settings_title_interface">Interaktion</string>
     <string name="settings_title_about">Über</string>
     <string name="settings_title_upper_case">Großbuchstaben</string>
     <string name="settings_title_author">Autor</string>
-    <string name="settings_title_libraries">Bibliotheken</string>
-    <string name="settings_title_app_file_manager">Interner Dateimanager</string>
     <string name="settings_title_version">Version</string>
-    <string name="settings_title_vibration">Vibration</string>
     <string name="settings_title_privacy">Datenschutz</string>
-    <string name="settings_title_export_user_data">Benutzerdaten exportieren</string>
     <string name="settings_title_privacy_policy">Datenschutzbestimmungen</string>
     <string name="settings_title_theme">Farbe</string>
     <string name="settings_title_rate_app">Bewerte die App</string>
-    <string name="settings_title_save_result_to_history">Ergebnis im Verlauf speichern</string>
     <string name="settings_title_multiline">Mehrzeilige Hashwerte</string>
     <string name="settings_title_language">Sprache</string>
     <string name="settings_title_support">Support</string>
@@ -74,8 +60,6 @@
     <string name="feedback_model">Modell</string>
     <string name="feedback_message">Mitteilung</string>
     <!-- file manager -->
-    <string name="file_manager_select_storage_title">Speicher auswählen</string>
     <!-- history -->
     <string name="history_item_click_text">Hash-Wert in die Zwischenablage kopiert</string>
-    <string name="history_empty_view_message">Verlaufselemente nicht gefunden</string>
 </resources>

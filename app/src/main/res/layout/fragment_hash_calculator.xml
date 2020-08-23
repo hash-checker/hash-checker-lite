@@ -53,7 +53,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_field_custom_hash"
                     style="@style/AppEditTextHashValue"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_width="0dp">
 
                     <EditText
                         android:id="@+id/et_field_custom_hash"
@@ -86,7 +87,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_field_generated_hash"
                     style="@style/AppEditTextHashValue"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:layout_width="0dp">
 
                     <EditText
                         android:id="@+id/et_field_generated_hash"

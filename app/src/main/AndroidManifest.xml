@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.smlnskgmail.jaman.hashchecker">
+    package="com.smlnskgmail.jaman.hashcheckerlite">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <application android:name=".App"
+    <application android:name="com.smlnskgmail.jaman.hashcheckerlite.App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -19,7 +18,7 @@
         tools:targetApi="n">
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.smlnskgmail.jaman.hashcheckerlite.MainActivity"
             android:label="@string/common_app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
@@ -55,8 +54,6 @@
             </intent-filter>
 
         </activity>
-
-        <activity android:name=".logic.filemanager.ui.FileManagerActivity" />
 
     </application>
 

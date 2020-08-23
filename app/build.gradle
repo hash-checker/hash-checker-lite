@@ -7,14 +7,14 @@ android {
     compileSdkVersion 29
     buildToolsVersion '29.0.3'
     defaultConfig {
-        applicationId 'com.smlnskgmail.jaman.hashchecker'
+        applicationId 'com.smlnskgmail.jaman.hashcheckerlite'
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 83
-        versionName '3.5.0'
+        versionCode 1
+        versionName '1.0.0'
         vectorDrawables.useSupportLibrary = true
 
-        testInstrumentationRunner 'com.smlnskgmail.jaman.hashchecker.runner.AndroidJacocoTestRunner'
+        testInstrumentationRunner 'com.smlnskgmail.jaman.hashcheckerlite.runner.AndroidJacocoTestRunner'
 
         resConfigs 'en',
                 'de',
@@ -42,8 +42,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                    'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
     compileOptions {
@@ -71,22 +70,16 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             def versionName = android.defaultConfig.versionName
-            output.outputFileName = "hash-checker_${versionName}.apk"
+            output.outputFileName = "hash-checker-lite_${versionName}.apk"
         }
     }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.material:material:1.2.0'
     implementation 'androidx.preference:preference:1.1.1'
-
-    implementation 'com.smlnskgmail.jaman:adaptiverecyclerview:1.1.0'
-
-    // ORMLite
-    implementation 'com.j256.ormlite:ormlite-core:5.1'
-    implementation 'com.j256.ormlite:ormlite-android:5.1'
 
     // Unit tests
     testImplementation 'junit:junit:4.13'
@@ -97,7 +90,4 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
-
-    // Screenshots
-    androidTestImplementation 'tools.fastlane:screengrab:2.0.0'
 }
