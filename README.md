@@ -17,6 +17,23 @@
 
 Fast and simple application for generating and comparison hashes from files or text. Lite version of [Hash Checker](https://github.com/fartem/hash-checker).
 
+## Original app and lite version comparsion
+
+| Feature | [Hash Checker](https://github.com/fartem/hash-checker) | Hash Checker Lite |
+| --- | --- | --- |
+| MD5 support | + | + |
+| SHA-1 support | + | + |
+| SHA-224 support | + | + |
+| SHA-256 support | + | + |
+| SHA-384 support | + | + |
+| SHA-512 support | + | + |
+| CRC-32 support | + | + |
+| Language switch | + | + |
+| Inner File Manager | + | |
+| History | + | |
+| User data export | + | |
+| Vibration | + | |
+
 ## Screenshots (Light theme)
 
 <br/>
