@@ -60,6 +60,17 @@ Fast and simple application for generating and comparison hashes from files or t
 
 * [fartem.github.io/hash-checker-privacy-policy.io](https://fartem.github.io/hash-checker-privacy-policy.io/)
 
+## How to build unsigned .apk from command line without IDE
+
+From project directory run:
+
+```shell
+$ ./gradlew clean
+$ ./gradlew assembleDebug
+```
+
+Go to `app` -> `build` -> `outputs` -> `apk` -> `debug` and find `hash-checker-lite_VERSION.apk` where 'VERSION' is number of app version.
+
 ## How to contribute
 
 Read [Commit Convention](https://github.com/fartem/repository-rules/blob/master/commit-convention/COMMIT_CONVENTION.md). Make sure your build is green before you contribute your pull request. Then:
