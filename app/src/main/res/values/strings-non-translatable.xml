@@ -4,7 +4,7 @@
     <string name="common_app_name" translatable="false">Hash Checker Lite</string>
     <string name="common_app_author" translatable="false">fartem</string>
     <string name="common_none" translatable="false">-</string>
-    <string name="common_email" translatable="false">artem.fomchenkov@pm.me</string>
+    <string name="common_email" translatable="false">jaman.smlnsk@gmail.com</string>
 
     <!-- settings -->
     <string name="key_upper_case" translatable="false">upper_case</string>
@@ -27,7 +27,7 @@
     <string name="title_web_link_google_play" translatable="false">Google Play</string>
 
     <!-- web links -->
-    <string name="web_link_source_code" translatable="false">https://github.com/fartem/hash-checker</string>
+    <string name="web_link_source_code" translatable="false">https://github.com/fartem/hash-checker-lite</string>
     <string name="web_link_my_apps" translatable="false">https://play.google.com/store/apps/developer?id=fartem</string>
     <string name="web_link_privacy_policy" translatable="false">https://fartem.github.io/hash-checker-privacy-policy.io</string>
     <string name="web_link_help_with_translation" translatable="false">https://osbvnmv.oneskyapp.com/collaboration/project?id=353871</string>
