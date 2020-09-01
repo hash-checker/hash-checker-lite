@@ -65,7 +65,7 @@ Fast and simple application for generating and comparison hashes from files or t
 
 ## Feedback
 
-If you have any question or feature idea for app, you can open issue on [this page](https://github.com/fartem/hash-checker-lite/issues) or contact me at email jaman.smlnsk@gmail.com.
+If you have any question or feature idea for app, you can open issue on [this page](https://github.com/fartem/hash-checker-lite/issues) or contact me by email jaman.smlnsk@gmail.com.
 
 ## How to build unsigned .apk from command line without IDE
 
