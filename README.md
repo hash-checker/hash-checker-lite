@@ -11,6 +11,9 @@
 <a href="https://labs.xda-developers.com/store/app/com.smlnskgmail.jaman.hashcheckerlite">
   <img src="media/banners/bn_xda_labs.png" height="75px" />
 </a>
+<a href="https://www.androidfilehost.com/?w=files&flid=316844">
+  <img src="media/banners/bn_android_file_host.png" height="75px" />
+</a>
 
 [![Travis CI](https://travis-ci.org/fartem/hash-checker-lite.svg?branch=master)](https://travis-ci.org/fartem/hash-checker-lite)
 [![Codebeat](https://codebeat.co/badges/82ba496d-c878-46c3-a013-8274e4836fad)](https://codebeat.co/projects/github-com-fartem-hash-checker-lite-master)
