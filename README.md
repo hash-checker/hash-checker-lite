@@ -18,6 +18,7 @@
 [![Travis CI](https://travis-ci.org/fartem/hash-checker-lite.svg?branch=master)](https://travis-ci.org/fartem/hash-checker-lite)
 [![Codebeat](https://codebeat.co/badges/82ba496d-c878-46c3-a013-8274e4836fad)](https://codebeat.co/projects/github-com-fartem-hash-checker-lite-master)
 [![Codecov](https://codecov.io/gh/fartem/hash-checker-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/fartem/hash-checker-lite)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Hash%20Checker%20Lite-green.svg?style=flat)](https://android-arsenal.com/details/1/8155)
 
 ## About application
 
