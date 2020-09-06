@@ -24,7 +24,7 @@
 
 Fast and simple application for generating and comparison hashes from files or text. Lite version of [Hash Checker](https://github.com/fartem/hash-checker).
 
-## Original app and lite version comparsion
+## Original app and lite version comparison
 
 | Feature | [Hash Checker](https://github.com/fartem/hash-checker) | Hash Checker Lite |
 | --- | --- | --- |
@@ -62,6 +62,10 @@ Fast and simple application for generating and comparison hashes from files or t
   <img src="media/screenshots/screenshot_09.png" width="130" />
   <img src="media/screenshots/screenshot_10.png" width="130" />
 </p>
+
+## How to use
+
+* [H2S Media](https://www.how2shout.com/how-to/how-to-calculate-the-hash-of-a-file-or-create-custom-hash-on-android.html)
 
 ## Privacy Policy
 
