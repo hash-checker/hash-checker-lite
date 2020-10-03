@@ -8,6 +8,12 @@ Based on [keep a changelog](https://keepachangelog.com/en/1.0.0).
 
 ### Closed issues
 
+- #3 (Remove "requestLegacyExternalStorage" parameter from AndroidManifest.xml).
+
+## [1.0.1](https://github.com/fartem/hash-checker-lite/releases/tag/1.0.1) - 2020-08-31
+
+### Closed issues
+
 - #1 (Replace old email link by actual);
 - #2 (Replace all GitHub Hash Checker links by Hash Checker Lite links).
 

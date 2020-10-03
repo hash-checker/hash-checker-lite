@@ -9,13 +9,9 @@ import androidx.annotation.Nullable;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashCalculator;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashType;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.SettingsHelper;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 
