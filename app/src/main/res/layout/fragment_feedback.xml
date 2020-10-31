@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/iv_feedback_icon"
             android:layout_width="@dimen/icon_size_email"
             android:layout_height="@dimen/icon_size_email"
             android:layout_gravity="center"
@@ -37,7 +36,6 @@
         <LinearLayout style="@style/AppFeedbackDeviceItemLayout">
 
             <TextView
-                android:id="@+id/tv_hash_checker_title"
                 style="@style/AppFeedbackTitle"
                 android:text="@string/feedback_hash_checker_title" />
 
@@ -50,7 +48,6 @@
         <LinearLayout style="@style/AppFeedbackDeviceItemLayout">
 
             <TextView
-                android:id="@+id/tv_android_title"
                 style="@style/AppFeedbackTitle"
                 android:text="@string/feedback_android_title" />
 
@@ -63,7 +60,6 @@
         <LinearLayout style="@style/AppFeedbackDeviceItemLayout">
 
             <TextView
-                android:id="@+id/tv_manufacturer_title"
                 style="@style/AppFeedbackTitle"
                 android:text="@string/feedback_manufacturer" />
 
@@ -76,7 +72,6 @@
         <LinearLayout style="@style/AppFeedbackDeviceItemLayout">
 
             <TextView
-                android:id="@+id/tv_model_title"
                 style="@style/AppFeedbackTitle"
                 android:text="@string/feedback_model" />
 

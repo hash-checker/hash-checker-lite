@@ -2,29 +2,29 @@
 <resources>
     <!-- menu -->
     <string name="menu_title_settings">Configuraciones</string>
-    <string name="menu_title_feedback">Realimentación</string>
+    <string name="menu_title_feedback">Retroalimentación</string>
     <!-- dialog titles -->
     <string name="title_dialog_enter_text">Añadir texto</string>
     <string name="title_warning_dialog">Advertencia</string>
     <!-- messages -->
-    <string name="message_exit">Mantenga presionado el botón Atrás para cerrar la aplicación</string>
+    <string name="message_exit">Mantenga presionado en el botón \"Atrás\" para cerrar la aplicación</string>
     <string name="message_fill_fields">Rellene cada campo para comparar</string>
-    <string name="message_generate_hash_before_export">Generar valor hash antes de exportar</string>
+    <string name="message_generate_hash_before_export">Genere valor hash antes de exportar</string>
     <string name="message_match_result">Partido</string>
     <string name="message_do_not_match_result">No coinciden</string>
     <string name="message_generate_dialog">Generando hash, por favor espera…</string>
-    <string name="message_select_object">Toque Desde para seleccionar un tipo de fuente necesario</string>
-    <string name="message_error_start_file_selector">No puedo encontrar un administrador de archivos en su dispositivo</string>
+    <string name="message_select_object">Toque \"Desde\" para seleccionar un tipo de fuente necesario</string>
+    <string name="message_error_start_file_selector">No pudo encontrar un administrador de archivos en su dispositivo</string>
     <string name="message_error_start_google_play">No puedo encontrar una aplicación de Google Play o un navegador web en su dispositivo</string>
     <string name="message_email_app_chooser">Elija la aplicación para enviar un correo electrónico</string>
     <string name="message_change_theme">Para cambiar el tema, debe reiniciar la aplicación</string>
     <string name="message_change_language">Para cambiar el idioma, debe reiniciar la aplicación.</string>
     <string name="message_invalid_selected_source">No se puede generar un valor hash desde la fuente de entrada. Por favor verifique la fuente seleccionada</string>
     <!-- commons -->
-    <string name="common_text">Texto</string>
+    <string name="common_text">Añadir texto</string>
     <string name="common_file">Expediente</string>
     <string name="common_add">Añadir</string>
-    <string name="common_ok">Okay</string>
+    <string name="common_ok">Ok</string>
     <string name="common_cancel">Cancelar</string>
     <!-- actions -->
     <string name="action_from">Desde</string>
@@ -33,8 +33,8 @@
     <string name="action_generate">Generar</string>
     <string name="action_compare">Comparar</string>
     <!-- themes -->
-    <string name="title_theme_light">Ligero</string>
-    <string name="title_theme_dark">Oscuro</string>
+    <string name="title_theme_light">Claro</string>
+    <string name="title_theme_dark">Obscuro</string>
     <!-- titles -->
     <string name="title_custom_hash">Hash personalizado</string>
     <string name="title_generated_hash">Hash generado</string>
@@ -47,7 +47,7 @@
     <string name="settings_title_upper_case">Mayúscula</string>
     <string name="settings_title_author">Author</string>
     <string name="settings_title_version">Versión</string>
-    <string name="settings_title_privacy">Intimidad</string>
+    <string name="settings_title_privacy">Privacidad</string>
     <string name="settings_title_privacy_policy">Política de privacidad</string>
     <string name="settings_title_theme">Tema</string>
     <string name="settings_title_rate_app">Calificar aplicacion</string>

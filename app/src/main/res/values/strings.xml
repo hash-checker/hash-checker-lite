@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">Manufacturer</string>
     <string name="feedback_model">Model</string>
     <string name="feedback_message">Message</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Hash value copied to clipboard</string>
 </resources>

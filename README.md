@@ -41,6 +41,10 @@ Fast and simple application for generating and comparison hashes from files or t
 | User data export | + | |
 | Vibration | + | |
 
+## Translation
+
+You can help with translation on [OneSky](https://osbvnmv.oneskyapp.com/collaboration/project?id=353871).
+
 ## Screenshots (Light theme)
 
 <br/>
@@ -102,3 +106,4 @@ If you don't see any error messages, submit your pull request.
 
 * [@fartem](https://github.com/fartem) as Artem Fomchenkov
 * [@Marwa-Eltayeb](https://github.com/Marwa-Eltayeb) as Marwa Said
+* [@vaqueraexe](https://github.com/vaqueraexe) as Sergio Amaya
