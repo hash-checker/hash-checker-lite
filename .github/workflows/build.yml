@@ -30,7 +30,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew check --stacktrace
 
-  instrumentationTests:
+  tests:
+    needs: build
     runs-on: macos-latest
 
     steps:
@@ -45,6 +46,9 @@ jobs:
       with:
         path: ~/.gradle/wrapper
         key: wrapper-${{ runner.os }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+      
+    - name: Run Unit tests
+      run: ./gradlew jacocoTestReport
       
     - name: Run Instrumentation tests
       uses: reactivecircus/android-emulator-runner@v2
