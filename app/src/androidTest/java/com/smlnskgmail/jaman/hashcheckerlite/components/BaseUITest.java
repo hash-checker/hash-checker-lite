@@ -23,7 +23,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 public abstract class BaseUITest {
 
-    protected static final int SECOND_IN_MILLIS = 2000;
+    protected static final int SECOND_IN_MILLIS = 1000;
 
     @Test
     public abstract void runTest() throws Exception;
