@@ -32,6 +32,9 @@ jobs:
 
   tests:
     runs-on: macos-latest
+    strategy:
+      matrix:
+        api-level: [21, 23, 25, 29]
 
     steps:
     - uses: actions/checkout@v2
@@ -52,7 +55,8 @@ jobs:
     - name: Run Instrumentation tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: 29
+        api-level: ${{ matrix.api-level }}
+        profile: Nexus 6
         script: ./gradlew createDebugCoverageReport --stacktrace
         
     - name: Send JaCoCo coverage report to Codecov
