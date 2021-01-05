@@ -46,6 +46,7 @@ public enum WebLink implements ListItem {
         return linkResId;
     }
 
+    @NonNull
     @Override
     public String getTitle(@NonNull Context context) {
         return context.getString(titleResId);
@@ -61,6 +62,7 @@ public enum WebLink implements ListItem {
         return DEFAULT_ICON_VALUE;
     }
 
+    @NonNull
     public static List<WebLink> getAuthorLinks() {
         return Arrays.asList(
                 SOURCE_CODE,

@@ -46,6 +46,7 @@ public enum Action implements ListItem {
         this.userActionType = userActionType;
     }
 
+    @NonNull
     @Override
     public String getTitle(@NonNull Context context) {
         return context.getString(titleResId);
@@ -61,6 +62,7 @@ public enum Action implements ListItem {
         return -1;
     }
 
+    @NonNull
     public UserActionType getUserActionType() {
         return userActionType;
     }

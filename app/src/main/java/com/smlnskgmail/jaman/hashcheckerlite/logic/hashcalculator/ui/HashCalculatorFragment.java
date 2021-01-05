@@ -157,15 +157,15 @@ public class HashCalculatorFragment extends BaseFragment
             progressDialog.show();
             if (isTextSelected) {
                 new HashCalculatorTask(
-                        hashType,
                         context,
+                        hashType,
                         tvSelectedObjectName.getText().toString(),
                         hashCalculatorTaskTarget
                 ).execute();
             } else {
                 new HashCalculatorTask(
-                        hashType,
                         context,
+                        hashType,
                         fileUri,
                         hashCalculatorTaskTarget
                 ).execute();
@@ -279,6 +279,7 @@ public class HashCalculatorFragment extends BaseFragment
         }
     }
 
+    @NonNull
     private String fileNameFromUri(@NonNull Uri uri) {
         String scheme = uri.getScheme();
         if (scheme != null && scheme.equals("content")) {
@@ -462,6 +463,8 @@ public class HashCalculatorFragment extends BaseFragment
         }
     }
 
+    @SuppressWarnings("MethodParametersAnnotationCheck")
+    @NonNull
     private TextWatcher watcherForInputField(
             @NonNull ImageView copyButton,
             @NonNull ImageView clearButton
@@ -610,7 +613,7 @@ public class HashCalculatorFragment extends BaseFragment
     public void onActivityResult(
             int requestCode,
             int resultCode,
-            Intent data
+            @Nullable Intent data
     ) {
         if (data != null) {
             if (requestCode == FILE_SELECT) {

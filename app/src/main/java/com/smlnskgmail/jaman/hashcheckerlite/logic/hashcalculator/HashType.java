@@ -23,6 +23,7 @@ public enum HashType implements ListItem {
         this.hashName = hashName;
     }
 
+    @NonNull
     public String getHashName() {
         return hashName;
     }
@@ -34,7 +35,7 @@ public enum HashType implements ListItem {
 
     @NonNull
     public static HashType getHashTypeFromString(@NonNull String string) {
-        for (HashType hashType: values()) {
+        for (HashType hashType : values()) {
             if (hashType.hashName.equals(string)) {
                 return hashType;
             }
@@ -42,6 +43,7 @@ public enum HashType implements ListItem {
         return MD5;
     }
 
+    @NonNull
     @Override
     public String getTitle(@NonNull Context context) {
         return hashName;

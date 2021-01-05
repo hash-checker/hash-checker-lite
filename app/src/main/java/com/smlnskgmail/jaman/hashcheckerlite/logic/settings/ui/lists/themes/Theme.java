@@ -26,6 +26,7 @@ public enum Theme implements ListItem {
         this.themeResId = themeResId;
     }
 
+    @NonNull
     @Override
     public String getTitle(@NonNull Context context) {
         return context.getString(titleResId);

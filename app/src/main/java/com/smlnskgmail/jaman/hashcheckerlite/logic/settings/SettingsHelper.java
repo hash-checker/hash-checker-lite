@@ -27,6 +27,7 @@ public class SettingsHelper {
         );
     }
 
+    @NonNull
     public static HashType getLastHashType(
             @NonNull Context context
     ) {
@@ -87,11 +88,12 @@ public class SettingsHelper {
         );
     }
 
+    @NonNull
     public static Theme getSelectedTheme(
             @NonNull Context context
     ) {
         String selectedTheme = SettingsHelper.getTheme(context);
-        for (Theme theme: Theme.values()) {
+        for (Theme theme : Theme.values()) {
             if (theme.toString().equals(selectedTheme)) {
                 return theme;
             }
@@ -102,6 +104,7 @@ public class SettingsHelper {
     /*
      * Saved for old versions compatibility (where themes count > 2)
      */
+    @NonNull
     private static String getTheme(
             @NonNull Context context
     ) {
@@ -129,6 +132,7 @@ public class SettingsHelper {
         return false;
     }
 
+    @NonNull
     private static Theme getThemeAnalogue(
             @NonNull String theme
     ) {
@@ -172,7 +176,7 @@ public class SettingsHelper {
 
     public static void saveTheme(
             @NonNull Context context,
-            Theme theme
+            @NonNull Theme theme
     ) {
         saveStringPreference(
                 context,
@@ -242,6 +246,7 @@ public class SettingsHelper {
                 .apply();
     }
 
+    @NonNull
     private static String getStringPreference(
             @NonNull Context context,
             @NonNull String key,

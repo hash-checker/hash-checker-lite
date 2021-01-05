@@ -1,5 +1,6 @@
 package com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.actions.ui;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment;
@@ -12,6 +13,7 @@ import java.util.List;
 
 abstract class ActionsBottomSheet extends BaseListBottomSheet<Action> {
 
+    @NonNull
     @Override
     protected BaseListAdapter<Action> getItemsAdapter() {
         Fragment parentFragment = getFragmentManager().findFragmentByTag(
@@ -24,6 +26,7 @@ abstract class ActionsBottomSheet extends BaseListBottomSheet<Action> {
         );
     }
 
+    @NonNull
     abstract List<Action> getActions();
 
 }

@@ -72,8 +72,8 @@ public abstract class BaseFragment extends Fragment
 
     @Override
     public void onCreateOptionsMenu(
-            Menu menu,
-            MenuInflater inflater
+            @NonNull Menu menu,
+            @NonNull MenuInflater inflater
     ) {
         menu.clear();
         inflater.inflate(getMenuResId(), menu);

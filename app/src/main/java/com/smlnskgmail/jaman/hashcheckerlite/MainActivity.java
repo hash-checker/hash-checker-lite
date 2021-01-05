@@ -122,7 +122,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         hideKeyboard();
         switch (item.getItemId()) {
             case R.id.menu_main_section_settings:
@@ -155,7 +155,7 @@ public class MainActivity extends BaseActivity {
         if (fragment instanceof AppBackClickTarget) {
             ((AppBackClickTarget) fragment).appBackClick();
         }
-        for (Fragment fragmentInApp: getSupportFragmentManager().getFragments()) {
+        for (Fragment fragmentInApp : getSupportFragmentManager().getFragments()) {
             if (fragmentInApp instanceof AppResumeTarget) {
                 ((AppResumeTarget) fragmentInApp).appResume();
             }
