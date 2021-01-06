@@ -2,7 +2,7 @@
 
 # Hash Checker Lite
 
-<a href="https://github.com/fartem/hash-checker-lite/releases">
+<a href="https://github.com/hash-checker/hash-checker-lite/releases">
   <img src="media/banners/bn_github.png" height="75px" />
 </a>
 <a href="https://play.google.com/store/apps/details?id=com.smlnskgmail.jaman.hashcheckerlite">
@@ -15,18 +15,18 @@
   <img src="media/banners/bn_android_file_host.png" height="75px" />
 </a>
 
-[![GitHubActions](https://github.com/fartem/hash-checker-lite/workflows/Build/badge.svg)](https://github.com/fartem/hash-checker-lite/actions?query=workflow%3ABuild)
-[![Codebeat](https://codebeat.co/badges/82ba496d-c878-46c3-a013-8274e4836fad)](https://codebeat.co/projects/github-com-fartem-hash-checker-lite-master)
-[![Codecov](https://codecov.io/gh/fartem/hash-checker-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/fartem/hash-checker-lite)
+[![GitHubActions](https://github.com/hash-checker/hash-checker-lite/workflows/Build/badge.svg)](https://github.com/hash-checker/hash-checker-lite/actions?query=workflow%3ABuild)
+[![Codacy](https://api.codacy.com/project/badge/Grade/cf1f8beb6a5340e49ca32425ab44462d)](https://app.codacy.com/gh/hash-checker/hash-checker-lite?utm_source=github.com&utm_medium=referral&utm_content=hash-checker/hash-checker-lite&utm_campaign=Badge_Grade)
+[![Codecov](https://codecov.io/gh/hash-checker/hash-checker-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/hash-checker/hash-checker-lite)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Hash%20Checker%20Lite-green.svg?style=flat)](https://android-arsenal.com/details/1/8155)
 
 ## About application
 
-Fast and simple application for generating and comparison hashes from files or text. Lite version of [Hash Checker](https://github.com/fartem/hash-checker).
+Fast and simple application for generating and comparison hashes from files or text. Lite version of [Hash Checker](https://github.com/hash-checker/hash-checker).
 
 ## Original app and lite version comparison
 
-| Feature | [Hash Checker](https://github.com/fartem/hash-checker) | Hash Checker Lite |
+| Feature | [Hash Checker](https://github.com/hash-checker/hash-checker) | Hash Checker Lite |
 | --- | --- | --- |
 | MD5 support | + | + |
 | SHA-1 support | + | + |
@@ -77,7 +77,7 @@ You can help with translation on [OneSky](https://osbvnmv.oneskyapp.com/collabor
 
 ## Feedback
 
-If you have any question or feature idea for app, you can open issue on [this page](https://github.com/fartem/hash-checker-lite/issues) or contact me by email jaman.smlnsk@gmail.com.
+If you have any question or feature idea for app, you can open issue on [this page](https://github.com/hash-checker/hash-checker-lite/issues) or contact me by email jaman.smlnsk@gmail.com.
 
 ## How to build unsigned .apk from command line without IDE
 
@@ -92,7 +92,7 @@ Go to `app` -> `build` -> `outputs` -> `apk` -> `debug` and find `hash-checker-l
 
 ## How to contribute
 
-Read [Commit Convention](https://github.com/fartem/repository-rules/blob/master/commit-convention/COMMIT_CONVENTION.md). Make sure your build is green before you contribute your pull request. Then:
+Read [Commit Convention](https://github.com/hash-checker/repository-rules/blob/master/commit-convention/COMMIT_CONVENTION.md). Make sure your build is green before you contribute your pull request. Then:
 
 ```shell
 $ ./gradlew clean

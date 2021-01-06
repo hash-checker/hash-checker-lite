@@ -11,8 +11,8 @@ android {
         applicationId 'com.smlnskgmail.jaman.hashcheckerlite'
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 4
-        versionName '1.0.3'
+        versionCode 5
+        versionName '1.0.4'
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner 'com.smlnskgmail.jaman.hashcheckerlite.runner.AndroidJacocoTestRunner'
@@ -81,6 +81,10 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.preference:preference:1.1.1'
+
+    // Checkstyle
+    checkstyle 'com.github.fartem:checkstyle-checks-java:master'
+    checkstyle 'com.github.fartem:checkstyle-checks-android:master'
 
     // Unit tests
     testImplementation 'junit:junit:4.13'

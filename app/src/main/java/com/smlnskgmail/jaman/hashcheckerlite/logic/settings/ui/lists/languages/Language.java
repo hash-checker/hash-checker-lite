@@ -41,6 +41,7 @@ public enum Language implements ListItem {
         return code;
     }
 
+    @NonNull
     @Override
     public String getTitle(@NonNull Context context) {
         return originalName;

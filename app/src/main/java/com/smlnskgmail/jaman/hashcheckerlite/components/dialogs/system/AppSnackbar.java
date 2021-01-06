@@ -81,10 +81,10 @@ public class AppSnackbar {
                 )
         );
 
-        TextView snackbarText = snackbar.getView().findViewById(
+        TextView tvSnackbarText = snackbar.getView().findViewById(
                 R.id.snackbar_text
         );
-        snackbarText.setTextColor(
+        tvSnackbarText.setTextColor(
                 UIUtils.getCommonTextColor(
                         context
                 )

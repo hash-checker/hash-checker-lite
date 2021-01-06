@@ -19,6 +19,10 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.SettingsHelper;
 
 public class UIUtils {
 
+    private UIUtils() {
+
+    }
+
     public static void removeFragment(
             @NonNull FragmentManager fragmentManager,
             @NonNull Fragment fragment

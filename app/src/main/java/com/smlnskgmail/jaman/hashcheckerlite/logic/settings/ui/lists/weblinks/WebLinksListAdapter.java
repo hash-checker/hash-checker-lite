@@ -21,14 +21,15 @@ public class WebLinksListAdapter extends BaseListAdapter<WebLink> {
         super(items, bottomSheet);
     }
 
+    @NonNull
     @Override
     public BaseListHolder<WebLink> getItemsHolder(
-            @NonNull View view,
-            @NonNull Context themeContext
+            @NonNull Context themeContext,
+            @NonNull View view
     ) {
         return new WebLinksListHolder(
-                view,
-                themeContext
+                themeContext,
+                view
         );
     }
 
@@ -37,10 +38,10 @@ public class WebLinksListAdapter extends BaseListAdapter<WebLink> {
         private WebLink webLink;
 
         WebLinksListHolder(
-                @NonNull View itemView,
-                @NonNull Context themeContext
+                @NonNull Context themeContext,
+                @NonNull View itemView
         ) {
-            super(itemView, themeContext);
+            super(themeContext, itemView);
         }
 
         @Override

@@ -11,6 +11,10 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
 
 public class WebUtils {
 
+    private WebUtils() {
+
+    }
+
     public static void openWebLink(
             @NonNull Context context,
             @NonNull String link

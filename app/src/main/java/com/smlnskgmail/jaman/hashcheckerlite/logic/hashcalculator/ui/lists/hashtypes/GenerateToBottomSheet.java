@@ -1,5 +1,6 @@
 package com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hashtypes;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment;
@@ -11,6 +12,7 @@ import java.util.Arrays;
 
 public class GenerateToBottomSheet extends BaseListBottomSheet<HashType> {
 
+    @NonNull
     @Override
     public BaseListAdapter<HashType> getItemsAdapter() {
         Fragment fragment = getFragmentManager().findFragmentByTag(
