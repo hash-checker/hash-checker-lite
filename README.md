@@ -16,7 +16,7 @@
 </a>
 
 [![GitHubActions](https://github.com/hash-checker/hash-checker-lite/workflows/Build/badge.svg)](https://github.com/hash-checker/hash-checker-lite/actions?query=workflow%3ABuild)
-[![Codebeat](https://codebeat.co/badges/82ba496d-c878-46c3-a013-8274e4836fad)](https://codebeat.co/projects/github-com-fartem-hash-checker-lite-master)
+[![Codacy](https://api.codacy.com/project/badge/Grade/cf1f8beb6a5340e49ca32425ab44462d)](https://app.codacy.com/gh/hash-checker/hash-checker-lite?utm_source=github.com&utm_medium=referral&utm_content=hash-checker/hash-checker-lite&utm_campaign=Badge_Grade)
 [![Codecov](https://codecov.io/gh/hash-checker/hash-checker-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/hash-checker/hash-checker-lite)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Hash%20Checker%20Lite-green.svg?style=flat)](https://android-arsenal.com/details/1/8155)
 
