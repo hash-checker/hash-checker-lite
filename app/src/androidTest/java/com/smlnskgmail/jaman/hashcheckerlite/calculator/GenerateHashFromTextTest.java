@@ -1,13 +1,8 @@
 package com.smlnskgmail.jaman.hashcheckerlite.calculator;
 
-import androidx.test.rule.ActivityTestRule;
-
-import com.smlnskgmail.jaman.hashcheckerlite.MainActivity;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseUITest;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashType;
-
-import org.junit.Rule;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,11 +24,6 @@ public class GenerateHashFromTextTest extends BaseUITest {
 
     private static final int TEXT_BUTTON_POSITION = 0;
     private static final int GENERATE_BUTTON_POSITION = 0;
-
-    @Rule
-    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
-            MainActivity.class
-    );
 
     @Override
     public void runTest() throws InterruptedException {

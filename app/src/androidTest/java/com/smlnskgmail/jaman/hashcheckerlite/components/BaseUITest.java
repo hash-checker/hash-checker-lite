@@ -5,11 +5,15 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.espresso.contrib.RecyclerViewActions;
+import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
+import com.smlnskgmail.jaman.hashcheckerlite.MainActivity;
 import com.smlnskgmail.jaman.hashcheckerlite.components.matchers.TextMatcher;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
 
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -24,6 +28,18 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 public abstract class BaseUITest {
 
     protected static final int SECOND_IN_MILLIS = 1000;
+
+    @Rule
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(
+            MainActivity.class,
+            false,
+            false
+    );
+
+    @Before
+    public void startActivity() {
+        activityTestRule.launchActivity(null);
+    }
 
     @Test
     public abstract void runTest() throws Exception;
