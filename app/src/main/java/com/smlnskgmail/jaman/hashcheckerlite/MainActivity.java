@@ -42,7 +42,8 @@ public class MainActivity extends BaseActivity {
         }
 
         HashCalculatorFragment mainFragment = new HashCalculatorFragment();
-        if (scheme != null && scheme.compareTo(ContentResolver.SCHEME_CONTENT) == 0) {
+        if (scheme != null && (
+                scheme.equals(ContentResolver.SCHEME_CONTENT) || scheme.equals(ContentResolver.SCHEME_FILE))) {
             mainFragment.setArguments(
                     getConfiguredBundleWithDataUri(
                             intent.getData()
