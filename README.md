@@ -8,9 +8,6 @@
 <a href="https://play.google.com/store/apps/details?id=com.smlnskgmail.jaman.hashcheckerlite">
   <img src="media/banners/bn_google_play.png" height="75px" />
 </a>
-<a href="https://labs.xda-developers.com/store/app/com.smlnskgmail.jaman.hashcheckerlite">
-  <img src="media/banners/bn_xda_labs.png" height="75px" />
-</a>
 <a href="https://www.androidfilehost.com/?w=files&flid=316844">
   <img src="media/banners/bn_android_file_host.png" height="75px" />
 </a>
