@@ -4,13 +4,9 @@ import android.content.Context;
 
 import androidx.annotation.IdRes;
 import androidx.test.espresso.contrib.RecyclerViewActions;
-import androidx.test.rule.ActivityTestRule;
 
-import com.smlnskgmail.jaman.hashcheckerlite.MainActivity;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseUITest;
-
-import org.junit.Rule;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
