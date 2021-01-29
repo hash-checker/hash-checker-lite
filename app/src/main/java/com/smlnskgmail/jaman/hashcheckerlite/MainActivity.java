@@ -25,7 +25,7 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.SettingsFragment;
 public class MainActivity extends BaseActivity {
 
     public static final String URI_FROM_EXTERNAL_APP
-            = "com.smlnskgmail.jaman.hashchecker.URI_FROM_EXTERNAL_APP";
+            = "com.smlnskgmail.jaman.hashcheckerlite.URI_FROM_EXTERNAL_APP";
 
     @Override
     public void create() {

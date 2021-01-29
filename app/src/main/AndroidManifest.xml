@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name="com.smlnskgmail.jaman.hashcheckerlite.App"
+        android:name=".App"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -18,7 +18,7 @@
         tools:targetApi="n">
 
         <activity
-            android:name="com.smlnskgmail.jaman.hashcheckerlite.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/common_app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
@@ -26,8 +26,8 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="com.smlnskgmail.jaman.hashchecker.ACTION_START_WITH_TEXT_SELECTION" />
-                <action android:name="com.smlnskgmail.jaman.hashchecker.ACTION_START_WITH_FILE_SELECTION" />
+                <action android:name="com.smlnskgmail.jaman.hashcheckerlite.ACTION_START_WITH_TEXT_SELECTION" />
+                <action android:name="com.smlnskgmail.jaman.hashcheckerlite.ACTION_START_WITH_FILE_SELECTION" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -36,6 +36,7 @@
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:scheme="content" />
                 <data android:host="*" />
@@ -44,7 +45,7 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:mimeType="application/*" />
                 <data android:mimeType="audio/*" />

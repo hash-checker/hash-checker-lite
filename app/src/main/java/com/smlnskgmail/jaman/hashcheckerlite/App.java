@@ -22,9 +22,9 @@ import java.util.Locale;
 public class App extends android.app.Application {
 
     public static final String ACTION_START_WITH_TEXT
-            = "com.smlnskgmail.jaman.hashchecker.ACTION_START_WITH_TEXT";
+            = "com.smlnskgmail.jaman.hashcheckerlite.ACTION_START_WITH_TEXT";
     public static final String ACTION_START_WITH_FILE
-            = "com.smlnskgmail.jaman.hashchecker.ACTION_START_WITH_FILE";
+            = "com.smlnskgmail.jaman.hashcheckerlite.ACTION_START_WITH_FILE";
 
     private static final String SHORTCUT_TEXT_ID = "shortcut_text";
     private static final String SHORTCUT_FILE_ID = "shortcut_file";
