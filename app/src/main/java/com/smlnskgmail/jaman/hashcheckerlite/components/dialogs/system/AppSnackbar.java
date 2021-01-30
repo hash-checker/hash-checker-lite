@@ -57,22 +57,24 @@ public class AppSnackbar {
                 message,
                 Snackbar.LENGTH_SHORT
         );
-        if (action != null) {
-            snackbar.setAction(actionText, action);
-        } else {
-            final Snackbar closableSnackbar = snackbar;
-            snackbar.setAction(
-                    context.getResources().getString(R.string.common_ok),
-                    v -> closableSnackbar.dismiss()
-            );
-            ((ViewGroup) snackbar.getView()).getChildAt(0)
-                    .setPadding(
-                            COMMON_SNACKBAR_MARGIN,
-                            COMMON_SNACKBAR_MARGIN,
-                            COMMON_SNACKBAR_MARGIN,
-                            COMMON_SNACKBAR_MARGIN
-                    );
+        @override
+        Widget build(BuildContext context) {
+          return Scaffold(
+            ...
+            body: WillPopScope(child: getBody(), onWillPop: onWillPop),
+          );
         }
+        
+        Future<bool> onWillPop() {
+            DateTime now = DateTime.now();
+            if (currentBackPressTime == null || 
+                now.difference(currentBackPressTime) > Duration(seconds: 2)) {
+              currentBackPressTime = now;
+              Fluttertoast.showToast(msg: exit_warning);
+              return Future.value(false);
+            }
+            return Future.value(true);
+          }
         snackbar.setActionTextColor(textColor);
         snackbar.getView().setBackground(
                 ContextCompat.getDrawable(
