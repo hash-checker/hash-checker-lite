@@ -57,22 +57,22 @@ public class AppSnackbar {
                 message,
                 Snackbar.LENGTH_SHORT
         );
-        if (action != null) {
-            snackbar.setAction(actionText, action);
-        } else {
-            final Snackbar closableSnackbar = snackbar;
-            snackbar.setAction(
-                    context.getResources().getString(R.string.common_ok),
-                    v -> closableSnackbar.dismiss()
-            );
-            ((ViewGroup) snackbar.getView()).getChildAt(0)
-                    .setPadding(
-                            COMMON_SNACKBAR_MARGIN,
-                            COMMON_SNACKBAR_MARGIN,
-                            COMMON_SNACKBAR_MARGIN,
-                            COMMON_SNACKBAR_MARGIN
-                    );
+        private long backpressedTime;
+        @override
+        protected void onCreate(Bundle SavedInstanceState){
+                super.onCreate(SavedInstanceState);
+                setContentView(R.layout.activity_main);
         }
+
+        @override
+        public void onBackpressed()   {
+                if(backpressedTime + 2000 > System.currentTimeMillis()){
+                     super.onBackpressed();
+                     return;
+                }else{
+                        Tost.makeText(getBaseContent(),"Press back again to exit",Tost.LENGTH_SHORT).show();
+                }
+        }    
         snackbar.setActionTextColor(textColor);
         snackbar.getView().setBackground(
                 ContextCompat.getDrawable(
