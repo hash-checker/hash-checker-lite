@@ -36,6 +36,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
     private ActionBar actionBar;
     private FragmentManager fragmentManager;
     private Context context;
+    private long backpressedTime;
 
     @SuppressLint("ResourceType")
     @SuppressWarnings("MethodParametersAnnotationCheck")
@@ -227,16 +228,15 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-    
-    public long backpressedTime;
-        @override
+    }   
+
+        @Override
         protected void onCreate(Bundle SavedInstanceState){
                 super.onCreate(SavedInstanceState);
                 setContentView(R.layout.activity_main);
         }
 
-        @override
+        @Override
         public void onBackpressed()   {
                 if(backpressedTime + 2000 > System.currentTimeMillis()){
                      super.onBackpressed();
@@ -244,6 +244,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
                 }else{
                         Tost.makeText(getBaseContent(),"Press back again to exit",Tost.LENGTH_SHORT).show();
                 }
-        }    
+        } 
     
 }
