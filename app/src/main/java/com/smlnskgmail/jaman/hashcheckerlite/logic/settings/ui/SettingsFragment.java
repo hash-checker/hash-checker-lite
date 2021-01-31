@@ -228,13 +228,22 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
         }
         return super.onOptionsItemSelected(item);
     }
+    
+    public long backpressedTime;
+        @override
+        protected void onCreate(Bundle SavedInstanceState){
+                super.onCreate(SavedInstanceState);
+                setContentView(R.layout.activity_main);
+        }
 
-    @Override
-    public void appBackClick() {
-        UIUtils.removeFragment(
-                fragmentManager,
-                this
-        );
-    }
-
+        @override
+        public void onBackpressed()   {
+                if(backpressedTime + 2000 > System.currentTimeMillis()){
+                     super.onBackpressed();
+                     return;
+                }else{
+                        Tost.makeText(getBaseContent(),"Press back again to exit",Tost.LENGTH_SHORT).show();
+                }
+        }    
+    
 }
