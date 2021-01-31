@@ -57,7 +57,6 @@ public class AppSnackbar {
                 message,
                 Snackbar.LENGTH_SHORT
         );
-<<<<<<< HEAD
           if (action != null) {
                snackbar.setAction(actionText, action);
          } else {
