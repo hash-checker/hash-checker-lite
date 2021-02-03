@@ -21,8 +21,6 @@ import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppResumeTarget;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.SettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.LangUtils;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
-import org.gradle.api.Plugin; 
-import org.gradle.api.Project;
 
 public abstract class BaseFragment extends Fragment
         implements AppBackClickTarget, AppResumeTarget {
@@ -128,27 +126,12 @@ public abstract class BaseFragment extends Fragment
 
     @Override
     public void onBackPressed() {
-        FragmentManager manager = getSupportFragmentManager();
-
-        if (manager.getBackStackEntryCount() > 1) {
-            // If there are back-stack entries, leave the FragmentActivity
-            // implementation take care of them.
-            manager.popBackStack();
-
-        } else {
-            // Otherwise, ask user if he wants to leave :)
-            new AlertDialog.Builder(this)
-                    .setTitle("Really Exit?")
-                    .setMessage("Are you sure you want to exit?")
-                    .setNegativeButton(android.R.string.no, null)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-
-                        public void onClick(DialogInterface arg0, int arg1) {
-                            // MainActivity.super.onBackPressed();
-                            finish();
-                            moveTaskToBack(true);
-                        }
-                    }).create().show();
+        if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
+        moveTaskToBack(false);
+    }
+        else {
+        super.onBackPressed();
         }
+    }
 
 }
