@@ -21,6 +21,8 @@ import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppResumeTarget;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.SettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.LangUtils;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
+import org.gradle.api.Plugin; 
+import org.gradle.api.Project;
 
 public abstract class BaseFragment extends Fragment
         implements AppBackClickTarget, AppResumeTarget {
