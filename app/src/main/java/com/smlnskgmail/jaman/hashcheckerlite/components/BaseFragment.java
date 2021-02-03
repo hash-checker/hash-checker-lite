@@ -125,12 +125,12 @@ public abstract class BaseFragment extends Fragment
     protected abstract int getLayoutResId();
 
     @Override
-    public void onBackPressed() {
+    public void appBackClick() {
         if(getSupportFragmentManager().getBackStackEntryCount() == 1) {
-        moveTaskToBack(false);
-    }
+            moveTaskToBack(false);
+        }
         else {
-        super.onBackPressed();
+            super.onBackPressed();
         }
     }
 
