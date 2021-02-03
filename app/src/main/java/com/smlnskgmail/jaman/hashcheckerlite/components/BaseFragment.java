@@ -130,7 +130,7 @@ public abstract class BaseFragment extends Fragment
             moveTaskToBack(false);
         }
         else {
-            super.onBackPressed();
+            super.appBackClick();
         }
     }
 
