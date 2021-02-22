@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">Tillverkare</string>
     <string name="feedback_model">Modell</string>
     <string name="feedback_message">Meddelande</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Hash-värde kopieras till urklipp</string>
 </resources>

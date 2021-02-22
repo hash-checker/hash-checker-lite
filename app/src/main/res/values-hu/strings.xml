@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">Gyártó</string>
     <string name="feedback_model">Modell</string>
     <string name="feedback_message">Üzenet</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">A hasítóérték a vágólapra másolt</string>
 </resources>

@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">Κατασκευαστής</string>
     <string name="feedback_model">Μοντέλο</string>
     <string name="feedback_message">Μήνυμα</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Η τιμή Hash αντιγράφηκε στο πρόχειρο</string>
 </resources>

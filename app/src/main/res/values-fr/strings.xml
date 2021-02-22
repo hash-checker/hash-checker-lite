@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">Fabricant</string>
     <string name="feedback_model">Modèle</string>
     <string name="feedback_message">Message</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Valeur de hachage copiée dans le presse-papier</string>
 </resources>

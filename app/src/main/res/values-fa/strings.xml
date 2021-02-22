@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">شرکت تولید کننده</string>
     <string name="feedback_model">مدل</string>
     <string name="feedback_message">پیام</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">مقدار هش در کلیپ بورد کپی شد</string>
 </resources>

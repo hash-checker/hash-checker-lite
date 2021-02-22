@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">生产厂家</string>
     <string name="feedback_model">模型</string>
     <string name="feedback_message">信息</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">将哈希值复制到剪切板</string>
 </resources>
