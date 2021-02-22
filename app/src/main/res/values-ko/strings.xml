@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">제조업체</string>
     <string name="feedback_model">모델</string>
     <string name="feedback_message">메시지</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">해시 값이 클립 보드에 복사되었습니다</string>
 </resources>

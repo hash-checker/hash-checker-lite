@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">Producent</string>
     <string name="feedback_model">Model</string>
     <string name="feedback_message">Wiadomość</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Wartość skrótu skopiowana do schowka</string>
 </resources>

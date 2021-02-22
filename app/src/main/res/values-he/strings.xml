@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">יצרן</string>
     <string name="feedback_model">דוגמנית</string>
     <string name="feedback_message">הודעה</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">ערך Hash מועתק ללוח</string>
 </resources>

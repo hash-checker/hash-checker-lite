@@ -93,4 +93,5 @@ If you don't see any error messages, submit your pull request.
 * [@fartem](https://github.com/fartem) as Artem Fomchenkov
 * [@Marwa-Eltayeb](https://github.com/Marwa-Eltayeb) as Marwa Said
 * [@vaqueraexe](https://github.com/vaqueraexe) as Sergio Amaya
-* [@jayagrawal254](https://github.com/jayagrawal254)
+* [@jayagrawal254](https://github.com/jayagrawal254) as jay agrawal
+* [@firaja](https://github.com/firaja) as David Bertoldi

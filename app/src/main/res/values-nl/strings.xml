@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">Fabrikant</string>
     <string name="feedback_model">Model</string>
     <string name="feedback_message">Bericht</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Hash-waarde gekopieerd naar klembord</string>
 </resources>

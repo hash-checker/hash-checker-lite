@@ -59,7 +59,6 @@
     <string name="feedback_manufacturer">Производитель</string>
     <string name="feedback_model">Модель</string>
     <string name="feedback_message">Сообщение</string>
-    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Значение скопировано в буфер обмена</string>
 </resources>
