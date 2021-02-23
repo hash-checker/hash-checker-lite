@@ -62,7 +62,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: 'app/build/outputs/bundle/release/hash-checker-lite_release.aab'
-          asset_name: hash-checker_${{ github.event.head_commit.message }}.aab
+          asset_name: hash-checker-lite_${{ github.event.head_commit.message }}.aab
           asset_content_type: application/zip
 
       - name: Upload Release APK
@@ -72,5 +72,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: 'app/build/outputs/apk/release/hash-checker-lite_release.apk'
-          asset_name: hash-checker_${{ github.event.head_commit.message }}.apk
+          asset_name: hash-checker-lite_${{ github.event.head_commit.message }}.apk
           asset_content_type: application/zip
