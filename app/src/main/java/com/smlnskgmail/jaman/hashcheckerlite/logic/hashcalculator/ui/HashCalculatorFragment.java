@@ -463,8 +463,8 @@ public class HashCalculatorFragment extends BaseFragment
         }
     }
 
-    @SuppressWarnings("MethodParametersAnnotationCheck")
     @NonNull
+    @SuppressWarnings("MethodParametersAnnotationCheck")
     private TextWatcher watcherForInputField(
             @NonNull ImageView copyButton,
             @NonNull ImageView clearButton
