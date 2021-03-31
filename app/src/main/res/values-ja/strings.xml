@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<resources>
+    <!-- menu -->
+    <string name="menu_title_settings">設定</string>
+    <string name="menu_title_feedback">フィードバック</string>
+    <!-- dialog titles -->
+    <string name="title_dialog_enter_text">テキストの追加</string>
+    <string name="title_warning_dialog">警告</string>
+    <!-- messages -->
+    <string name="message_exit">戻るボタンを長押ししてアプリケーションを閉じる</string>
+    <string name="message_fill_fields">比較のためにそれぞれのフィールドを埋める</string>
+    <string name="message_generate_hash_before_export">エクスポート前にハッシュ値を生成する</string>
+    <string name="message_match_result">マッチ</string>
+    <string name="message_do_not_match_result">非マッチ</string>
+    <string name="message_generate_dialog">ハッシュを生成しています。お待ちください...</string>
+    <string name="message_select_object">[差出人]をタップして、必要なソースタイプを選択します</string>
+    <string name="message_error_start_file_selector">あなたのデバイス上でファイルマネージャーが見つかりませんでした。</string>
+    <string name="message_error_start_google_play">あなたのデバイスにGoogle Play Appまたはウェブブラウザが見つかりませんでした。</string>
+    <string name="message_email_app_chooser">メールを送信するアプリを選択してください</string>
+    <string name="message_change_theme">テーマを変更するには、このアプリケーションを再起動してください。</string>
+    <string name="message_change_language">言語を変更するには、このアプリケーションを再起動してください。</string>
+    <string name="message_invalid_selected_source">入力ソースからハッシュ値を生成できません。選択したソースを確認してください。</string>
+    <!-- commons -->
+    <string name="common_text">テキスト</string>
+    <string name="common_file">ファイル</string>
+    <string name="common_add">追加</string>
+    <string name="common_ok">OK</string>
+    <string name="common_cancel">キャンセル</string>
+    <!-- actions -->
+    <string name="action_from">から</string>
+    <string name="action_select">アクション</string>
+    <string name="action_exit_now">今すぐ終了</string>
+    <string name="action_generate">生成</string>
+    <string name="action_compare">比較</string>
+    <!-- themes -->
+    <string name="title_theme_light">ライト</string>
+    <string name="title_theme_dark">ダーク</string>
+    <!-- titles -->
+    <string name="title_custom_hash">カスタムハッシュ</string>
+    <string name="title_generated_hash">ハッシュ生成</string>
+    <!-- hints -->
+    <string name="hint_input_text">ここにテキスト</string>
+    <!-- settings titles -->
+    <string name="settings_title_general">一般</string>
+    <string name="settings_title_interface">インターフェース</string>
+    <string name="settings_title_about">約</string>
+    <string name="settings_title_upper_case">大文字</string>
+    <string name="settings_title_author">著者</string>
+    <string name="settings_title_version">バージョン</string>
+    <string name="settings_title_privacy">プライバシー</string>
+    <string name="settings_title_privacy_policy">プライバシーポリシー</string>
+    <string name="settings_title_theme">テーマ</string>
+    <string name="settings_title_rate_app">アプリを評価</string>
+    <string name="settings_title_multiline">マルチラインハッシュフィールド</string>
+    <string name="settings_title_language">言語</string>
+    <string name="settings_title_support">サポート</string>
+    <string name="settings_title_help_with_translation">翻訳の支援</string>
+    <!-- feedback -->
+    <string name="feedback_manufacturer">メーカー</string>
+    <string name="feedback_model">モデル</string>
+    <string name="feedback_message">メッセージ</string>
+    <!-- history -->
+    <string name="history_item_click_text">クリップボードにコピーされたハッシュ値</string>
+</resources>
