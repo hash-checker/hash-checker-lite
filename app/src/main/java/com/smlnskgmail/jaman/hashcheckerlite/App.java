@@ -58,9 +58,9 @@ public class App extends android.app.Application {
         }
     }
 
+    @NonNull
     @RequiresApi(api = Build.VERSION_CODES.N_MR1)
     @SuppressLint("ResourceType")
-    @NonNull
     private ShortcutInfo getShortcutForTextType() {
         return getShortcut(
                 SHORTCUT_TEXT_ID,
@@ -70,9 +70,9 @@ public class App extends android.app.Application {
         );
     }
 
+    @NonNull
     @RequiresApi(api = Build.VERSION_CODES.N_MR1)
     @SuppressLint("ResourceType")
-    @NonNull
     private ShortcutInfo getShortcutForFileType() {
         return getShortcut(
                 SHORTCUT_FILE_ID,
@@ -82,9 +82,9 @@ public class App extends android.app.Application {
         );
     }
 
+    @NonNull
     @RequiresApi(api = Build.VERSION_CODES.N_MR1)
     @SuppressLint("ResourceType")
-    @NonNull
     private ShortcutInfo getShortcut(
             @NonNull String id,
             @IdRes int labelResId,
