@@ -31,7 +31,8 @@ android {
                 'pl',
                 'ru',
                 'sv',
-                'zh-rCN'
+                'zh-rCN',
+                'ja'
     }
     signingConfigs {
         release {
