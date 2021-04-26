@@ -7,8 +7,10 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
 
+import androidx.annotation.AttrRes;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -81,7 +83,7 @@ public class UIUtils {
 
     private static int getColorFromAttrs(
             @NonNull Context context,
-            @IdRes int themeColor
+            @AttrRes int themeColor
     ) {
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
@@ -95,7 +97,7 @@ public class UIUtils {
 
     public static void setActionBarTitle(
             @NonNull ActionBar actionBar,
-            int titleResId
+            @StringRes int titleResId
     ) {
         actionBar.setTitle(titleResId);
     }

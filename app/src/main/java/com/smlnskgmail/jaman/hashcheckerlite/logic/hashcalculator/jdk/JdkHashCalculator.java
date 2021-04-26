@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashCalculator;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashType;
@@ -22,11 +23,10 @@ public class JdkHashCalculator implements HashCalculator {
     public void setHashType(
             @NonNull HashType hashType
     ) throws NoSuchAlgorithmException {
-        this.jdkHashCalculatorDigest
-                = JdkHashCalculatorDigest.instanceFor(hashType);
+        this.jdkHashCalculatorDigest = JdkHashCalculatorDigest.instanceFor(hashType);
     }
 
-    @NonNull
+    @Nullable
     @Override
     public String fromString(@NonNull String text) {
         byte[] bytes = text.getBytes(StandardCharsets.UTF_8);
@@ -34,7 +34,7 @@ public class JdkHashCalculator implements HashCalculator {
         return jdkHashCalculatorDigest.result();
     }
 
-    @NonNull
+    @Nullable
     @Override
     public String fromFile(
             @NonNull Context context,

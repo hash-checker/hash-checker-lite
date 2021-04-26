@@ -34,10 +34,12 @@ public abstract class BaseFragment extends Fragment
             @NonNull View view,
             @Nullable Bundle savedInstanceState
     ) {
-        Context context = getContext();
+        Context context = view.getContext();
         LangUtils.setLocale(
                 context,
-                SettingsHelper.getLanguage(context)
+                SettingsHelper.getLanguage(
+                        context
+                )
         );
         super.onViewCreated(view, savedInstanceState);
     }
