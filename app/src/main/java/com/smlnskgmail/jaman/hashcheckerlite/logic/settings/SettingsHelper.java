@@ -185,16 +185,6 @@ public class SettingsHelper {
         );
     }
 
-    public static boolean getGenerateFromShareIntentStatus(
-            @NonNull Context context
-    ) {
-        return getBooleanPreference(
-                context,
-                context.getString(R.string.key_generate_from_share_intent),
-                false
-        );
-    }
-
     public static void setGenerateFromShareIntentMode(
             @NonNull Context context,
             boolean status
