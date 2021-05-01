@@ -23,8 +23,7 @@ public class JdkHashCalculatorDigest {
     public static JdkHashCalculatorDigest instanceFor(
             @NonNull HashType hashType
     ) throws NoSuchAlgorithmException {
-        JdkHashCalculatorDigest jdkHashCalculatorDigest
-                = new JdkHashCalculatorDigest();
+        JdkHashCalculatorDigest jdkHashCalculatorDigest = new JdkHashCalculatorDigest();
         jdkHashCalculatorDigest.setHashType(hashType);
         return jdkHashCalculatorDigest;
     }
