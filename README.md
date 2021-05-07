@@ -96,3 +96,4 @@ If you don't see any error messages, submit your pull request.
 * [@jayagrawal254](https://github.com/jayagrawal254) as jay agrawal
 * [@firaja](https://github.com/firaja) as David Bertoldi
 * [@fu7mu4](https://github.com/fu7mu4) as fu7mu4
+* [@vipozdn](https://github.com/vipozdn) as vipozdn
