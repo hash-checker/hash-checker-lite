@@ -3,7 +3,9 @@ package com.smlnskgmail.jaman.hashcheckerlite;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,6 +15,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.InstallStateUpdatedListener;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.InstallStatus;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseActivity;
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment;
 import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppBackClickTarget;
@@ -26,9 +37,12 @@ public class MainActivity extends BaseActivity {
 
     public static final String URI_FROM_EXTERNAL_APP
             = "com.smlnskgmail.jaman.hashcheckerlite.URI_FROM_EXTERNAL_APP";
-
+  
     private static final int MENU_ITEM_SETTINGS = R.id.menu_main_section_settings;
     private static final int MENU_ITEM_FEEDBACK = R.id.menu_main_section_feedback;
+
+    private static final int REQUEST_APP_UPDATE = 1;
+    private AppUpdateManager appUpdateManager;
 
     @Override
     public void create() {
@@ -79,6 +93,23 @@ public class MainActivity extends BaseActivity {
         }
 
         showFragment(mainFragment);
+
+        checkForUpdateAvailability();
+    }
+
+    // Checks that the update is not stalled during onResume().
+    @Override
+    protected void onResume() {
+        super.onResume();
+        appUpdateManager
+                .getAppUpdateInfo()
+                .addOnSuccessListener(appUpdateInfo -> {
+                    // If the update is downloaded but not installed,
+                    // notify the user to complete the update.
+                    if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                        popupSnackbarForCompleteUpdate();
+                    }
+                });
     }
 
     private void showFragment(@NonNull Fragment fragment) {
@@ -164,6 +195,52 @@ public class MainActivity extends BaseActivity {
                 ((AppResumeTarget) fragmentInApp).appResume();
             }
         }
+    }
+
+    private void checkForUpdateAvailability() {
+        appUpdateManager = AppUpdateManagerFactory.create(this);
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+                // Request the update.
+                requestUpdate(appUpdateInfo, AppUpdateType.FLEXIBLE, this, REQUEST_APP_UPDATE);
+            }
+        });
+    }
+
+    private void requestUpdate(AppUpdateInfo appUpdateInfo, int updateType, Context context, int requestCode) {
+
+        // monitor the state of an update
+        InstallStateUpdatedListener listener = state -> {
+            if (state.installStatus() == InstallStatus.DOWNLOADED) {
+                // After the update is downloaded, show a snackbar
+                // and request user confirmation to restart the app.
+                popupSnackbarForCompleteUpdate();
+            }
+        };
+
+        try {
+            appUpdateManager.startUpdateFlowForResult(
+                    appUpdateInfo,
+                    updateType,
+                    (Activity) context,
+                    requestCode);
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Displays the snackbar notification and call to action.
+    private void popupSnackbarForCompleteUpdate() {
+        Snackbar snackbar =
+                Snackbar.make(
+                        findViewById(android.R.id.content).getRootView(),
+                        getResources().getString(R.string.update_downloaded_message),
+                        Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(getResources().getString(R.string.update_restart_action),
+                view -> appUpdateManager.completeUpdate());
+        snackbar.show();
     }
 
 }
