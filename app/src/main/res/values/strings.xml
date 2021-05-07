@@ -61,4 +61,7 @@
     <string name="feedback_message">Message</string>
     <!-- history -->
     <string name="history_item_click_text">Hash value copied to clipboard</string>
+    <!-- in-app updates -->
+    <string name="update_downloaded_message" translatable="false">An update has just been downloaded.</string>
+    <string name="update_restart_action" translatable="false">RESTART</string>
 </resources>

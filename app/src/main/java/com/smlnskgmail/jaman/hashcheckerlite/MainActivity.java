@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity {
     public static final String URI_FROM_EXTERNAL_APP
             = "com.smlnskgmail.jaman.hashcheckerlite.URI_FROM_EXTERNAL_APP";
 
-    private static final int MY_REQUEST_CODE = 1;
+    private static final int REQUEST_APP_UPDATE = 1;
     private AppUpdateManager appUpdateManager;
 
     @Override
@@ -201,7 +201,7 @@ public class MainActivity extends BaseActivity {
             if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
                     && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
                 // Request the update.
-                requestUpdate(appUpdateInfo, AppUpdateType.FLEXIBLE, this, MY_REQUEST_CODE);
+                requestUpdate(appUpdateInfo, AppUpdateType.FLEXIBLE, this, REQUEST_APP_UPDATE);
             }
         });
     }
@@ -233,9 +233,10 @@ public class MainActivity extends BaseActivity {
         Snackbar snackbar =
                 Snackbar.make(
                         findViewById(android.R.id.content).getRootView(),
-                        "An update has just been downloaded.",
+                        getResources().getString(R.string.update_downloaded_message),
                         Snackbar.LENGTH_INDEFINITE);
-        snackbar.setAction("RESTART", view -> appUpdateManager.completeUpdate());
+        snackbar.setAction(getResources().getString(R.string.update_restart_action),
+                view -> appUpdateManager.completeUpdate());
         snackbar.show();
     }
 
