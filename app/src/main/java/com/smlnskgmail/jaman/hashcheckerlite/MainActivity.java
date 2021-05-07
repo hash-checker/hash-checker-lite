@@ -37,6 +37,9 @@ public class MainActivity extends BaseActivity {
 
     public static final String URI_FROM_EXTERNAL_APP
             = "com.smlnskgmail.jaman.hashcheckerlite.URI_FROM_EXTERNAL_APP";
+  
+    private static final int MENU_ITEM_SETTINGS = R.id.menu_main_section_settings;
+    private static final int MENU_ITEM_FEEDBACK = R.id.menu_main_section_feedback;
 
     private static final int REQUEST_APP_UPDATE = 1;
     private AppUpdateManager appUpdateManager;
@@ -77,7 +80,7 @@ public class MainActivity extends BaseActivity {
                     this,
                     true
             );
-        } else {
+        } else if (intent != null) {
             mainFragment.setArguments(
                     getBundleForShortcutAction(
                             intent.getAction()
@@ -157,10 +160,10 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         hideKeyboard();
         switch (item.getItemId()) {
-            case R.id.menu_main_section_settings:
+            case MENU_ITEM_SETTINGS:
                 showFragment(new SettingsFragment());
                 break;
-            case R.id.menu_main_section_feedback:
+            case MENU_ITEM_FEEDBACK:
                 showFragment(new FeedbackFragment());
                 break;
         }

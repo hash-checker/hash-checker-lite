@@ -13,15 +13,21 @@ public class TextTools {
         return firstValue.equalsIgnoreCase(secondValue.toLowerCase());
     }
 
-    public static boolean fieldIsNotEmpty(@NonNull EditText fieldToCheck) {
+    public static boolean fieldIsNotEmpty(
+            @NonNull EditText fieldToCheck
+    ) {
         return !fieldToCheck.getText().toString().equals("");
     }
 
-    public static void convertToUpperCase(@NonNull EditText editText) {
+    public static void convertToUpperCase(
+            @NonNull EditText editText
+    ) {
         editText.setText(editText.getText().toString().toUpperCase());
     }
 
-    public static void convertToLowerCase(@NonNull EditText editText) {
+    public static void convertToLowerCase(
+            @NonNull EditText editText
+    ) {
         editText.setText(editText.getText().toString().toLowerCase());
     }
 
