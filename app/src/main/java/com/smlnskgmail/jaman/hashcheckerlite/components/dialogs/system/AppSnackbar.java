@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
-import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 
 public class AppSnackbar {
 
@@ -21,7 +21,7 @@ public class AppSnackbar {
     private final String message;
     private String actionText;
     private View.OnClickListener action;
-    private final int textColor;
+    private final ThemeHelper themeHelper;
 
     public AppSnackbar(
             @NonNull Context context,
@@ -29,26 +29,26 @@ public class AppSnackbar {
             @NonNull String message,
             @NonNull String actionText,
             @NonNull View.OnClickListener action,
-            int textColor
+            @NonNull ThemeHelper themeHelper
     ) {
         this.context = context;
         this.parent = parent;
         this.message = message;
         this.actionText = actionText;
         this.action = action;
-        this.textColor = textColor;
+        this.themeHelper = themeHelper;
     }
 
     public AppSnackbar(
             @NonNull Context context,
             @NonNull View parent,
             @NonNull String message,
-            int textColor
+            @NonNull ThemeHelper themeHelper
     ) {
         this.context = context;
         this.parent = parent;
         this.message = message;
-        this.textColor = textColor;
+        this.themeHelper = themeHelper;
     }
 
     public void show() {
@@ -73,7 +73,9 @@ public class AppSnackbar {
                             COMMON_SNACKBAR_MARGIN
                     );
         }
-        snackbar.setActionTextColor(textColor);
+        snackbar.setActionTextColor(
+                themeHelper.getAccentColor()
+        );
         snackbar.getView().setBackground(
                 ContextCompat.getDrawable(
                         context,
@@ -85,9 +87,7 @@ public class AppSnackbar {
                 R.id.snackbar_text
         );
         tvSnackbarText.setTextColor(
-                UIUtils.getCommonTextColor(
-                        context
-                )
+                themeHelper.getCommonTextColor()
         );
         snackbar.show();
     }

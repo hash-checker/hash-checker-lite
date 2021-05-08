@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.themes;
+package com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api;
 
 import android.content.Context;
 

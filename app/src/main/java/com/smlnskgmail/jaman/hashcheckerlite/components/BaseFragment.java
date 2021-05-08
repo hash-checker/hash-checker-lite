@@ -1,6 +1,5 @@
 package com.smlnskgmail.jaman.hashcheckerlite.components;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,8 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppBackClickTarget;
 import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppResumeTarget;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.SettingsHelper;
-import com.smlnskgmail.jaman.hashcheckerlite.utils.LangUtils;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
 
 public abstract class BaseFragment extends Fragment
@@ -34,15 +32,12 @@ public abstract class BaseFragment extends Fragment
             @NonNull View view,
             @Nullable Bundle savedInstanceState
     ) {
-        Context context = view.getContext();
-        LangUtils.setLocale(
-                context,
-                SettingsHelper.getLanguage(
-                        context
-                )
-        );
+        langHelper().applyLanguage(view.getContext());
         super.onViewCreated(view, savedInstanceState);
     }
+
+    @NonNull
+    protected abstract LangHelper langHelper();
 
     @Override
     public void onResume() {
@@ -55,10 +50,7 @@ public abstract class BaseFragment extends Fragment
         if (actionBar == null) {
             actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         }
-        UIUtils.setActionBarTitle(
-                actionBar,
-                getActionBarTitleResId()
-        );
+        actionBar.setTitle(getActionBarTitleResId());
         if (setAllowBackAction()) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(

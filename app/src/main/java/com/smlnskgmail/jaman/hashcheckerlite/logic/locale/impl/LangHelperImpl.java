@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.hashcheckerlite.utils;
+package com.smlnskgmail.jaman.hashcheckerlite.logic.locale.impl;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -8,17 +8,32 @@ import android.os.LocaleList;
 
 import androidx.annotation.NonNull;
 
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.languages.Language;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.Language;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
 
 import java.util.Locale;
 
-public class LangUtils {
+public class LangHelperImpl implements LangHelper {
 
-    private LangUtils() {
+    private final Context context;
+    private final SettingsHelper settingsHelper;
 
+    public LangHelperImpl(
+            @NonNull Context context,
+            @NonNull SettingsHelper settingsHelper
+    ) {
+        this.context = context;
+        this.settingsHelper = settingsHelper;
     }
 
-    public static void setLocale(
+    @Override
+    public void setLanguage(@NonNull Language language) {
+        setLanguage(context, language);
+        settingsHelper.saveLanguage(language);
+    }
+
+    private void setLanguage(
             @NonNull Context context,
             @NonNull Language language
     ) {
@@ -47,6 +62,17 @@ public class LangUtils {
                 config,
                 resources.getDisplayMetrics()
         );
+    }
+
+    @Override
+    public void applyLanguage(@NonNull Context context) {
+        setLanguage(context, currentLanguage());
+    }
+
+    @NonNull
+    @Override
+    public Language currentLanguage() {
+        return settingsHelper.getLanguage();
     }
 
 }

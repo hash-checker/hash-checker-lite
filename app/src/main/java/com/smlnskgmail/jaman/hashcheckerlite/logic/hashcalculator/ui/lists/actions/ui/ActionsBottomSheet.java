@@ -8,6 +8,7 @@ import com.smlnskgmail.jaman.hashcheckerlite.components.bottomsheets.lists.BaseL
 import com.smlnskgmail.jaman.hashcheckerlite.components.bottomsheets.lists.adapter.BaseListAdapter;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.actions.Action;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.actions.types.UserActionTarget;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 
 import java.util.List;
 
@@ -22,9 +23,13 @@ abstract class ActionsBottomSheet extends BaseListBottomSheet<Action> {
         return new ActionsListAdapter(
                 getActions(),
                 this,
-                (UserActionTarget) parentFragment
+                (UserActionTarget) parentFragment,
+                themeHelper()
         );
     }
+
+    @NonNull
+    protected abstract ThemeHelper themeHelper();
 
     @NonNull
     abstract List<Action> getActions();

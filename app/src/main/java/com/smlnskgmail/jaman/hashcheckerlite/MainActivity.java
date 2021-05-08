@@ -28,8 +28,12 @@ import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppBackClickTarge
 import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppResumeTarget;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.feedback.FeedbackFragment;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.HashCalculatorFragment;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.SettingsHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.SettingsFragment;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
+
+import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity {
 
@@ -40,7 +44,41 @@ public class MainActivity extends BaseActivity {
     private static final int MENU_ITEM_FEEDBACK = R.id.menu_main_section_feedback;
 
     private static final int REQUEST_APP_UPDATE = 1;
+
+    @Inject
+    SettingsHelper settingsHelper;
+
+    @Inject
+    LangHelper langHelper;
+
+    @Inject
+    ThemeHelper themeHelper;
+
     private AppUpdateManager appUpdateManager;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        App.appComponent.inject(this);
+        super.onCreate(savedInstanceState);
+    }
+
+    @NonNull
+    @Override
+    protected SettingsHelper settingsHelper() {
+        return settingsHelper;
+    }
+
+    @NonNull
+    @Override
+    protected LangHelper langHelper() {
+        return langHelper;
+    }
+
+    @NonNull
+    @Override
+    protected ThemeHelper themeHelper() {
+        return themeHelper;
+    }
 
     @Override
     public void create() {
@@ -64,34 +102,23 @@ public class MainActivity extends BaseActivity {
                             intent.getData()
                     )
             );
-            SettingsHelper.setGenerateFromShareIntentMode(
-                    this,
-                    true
-            );
+            settingsHelper.setGenerateFromShareIntentMode(true);
         } else if (externalFileUri != null) {
             mainFragment.setArguments(
                     getConfiguredBundleWithDataUri(
                             externalFileUri
                     )
             );
-            SettingsHelper.setGenerateFromShareIntentMode(
-                    this,
-                    true
-            );
+            settingsHelper.setGenerateFromShareIntentMode(true);
         } else if (intent != null) {
             mainFragment.setArguments(
                     getBundleForShortcutAction(
                             intent.getAction()
                     )
             );
-            SettingsHelper.setGenerateFromShareIntentMode(
-                    this,
-                    false
-            );
+            settingsHelper.setGenerateFromShareIntentMode(false);
         }
-
         showFragment(mainFragment);
-
         checkForUpdateAvailability();
     }
 
