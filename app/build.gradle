@@ -11,8 +11,8 @@ android {
         applicationId 'com.smlnskgmail.jaman.hashcheckerlite'
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 8
-        versionName '1.0.7'
+        versionCode 9
+        versionName '1.0.8'
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner 'com.smlnskgmail.jaman.hashcheckerlite.runner.AndroidJacocoTestRunner'
@@ -32,6 +32,7 @@ android {
                 'ru',
                 'sv',
                 'zh-rCN',
+                'vi',
                 'ja'
     }
     signingConfigs {

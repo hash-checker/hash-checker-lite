@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity {
 
     public static final String URI_FROM_EXTERNAL_APP
             = "com.smlnskgmail.jaman.hashcheckerlite.URI_FROM_EXTERNAL_APP";
-  
+
     private static final int MENU_ITEM_SETTINGS = R.id.menu_main_section_settings;
     private static final int MENU_ITEM_FEEDBACK = R.id.menu_main_section_feedback;
 
