@@ -3,7 +3,6 @@ package com.smlnskgmail.jaman.hashcheckerlite;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.net.Uri;
@@ -19,7 +18,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
@@ -97,15 +95,12 @@ public class MainActivity extends BaseActivity {
         checkForUpdateAvailability();
     }
 
-    // Checks that the update is not stalled during onResume().
     @Override
     protected void onResume() {
         super.onResume();
         appUpdateManager
                 .getAppUpdateInfo()
                 .addOnSuccessListener(appUpdateInfo -> {
-                    // If the update is downloaded but not installed,
-                    // notify the user to complete the update.
                     if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
                         popupSnackbarForCompleteUpdate();
                     }
@@ -203,43 +198,34 @@ public class MainActivity extends BaseActivity {
         appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
             if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
                     && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
-                // Request the update.
-                requestUpdate(appUpdateInfo, AppUpdateType.FLEXIBLE, this, REQUEST_APP_UPDATE);
+                requestUpdate(appUpdateInfo);
             }
         });
     }
 
-    private void requestUpdate(AppUpdateInfo appUpdateInfo, int updateType, Context context, int requestCode) {
-
-        // monitor the state of an update
-        InstallStateUpdatedListener listener = state -> {
-            if (state.installStatus() == InstallStatus.DOWNLOADED) {
-                // After the update is downloaded, show a snackbar
-                // and request user confirmation to restart the app.
-                popupSnackbarForCompleteUpdate();
-            }
-        };
-
+    private void requestUpdate(@NonNull AppUpdateInfo appUpdateInfo) {
         try {
             appUpdateManager.startUpdateFlowForResult(
                     appUpdateInfo,
-                    updateType,
-                    (Activity) context,
-                    requestCode);
+                    AppUpdateType.FLEXIBLE,
+                    this,
+                    REQUEST_APP_UPDATE
+            );
         } catch (IntentSender.SendIntentException e) {
             e.printStackTrace();
         }
     }
 
-    // Displays the snackbar notification and call to action.
     private void popupSnackbarForCompleteUpdate() {
-        Snackbar snackbar =
-                Snackbar.make(
-                        findViewById(android.R.id.content).getRootView(),
-                        getResources().getString(R.string.update_downloaded_message),
-                        Snackbar.LENGTH_INDEFINITE);
-        snackbar.setAction(getResources().getString(R.string.update_restart_action),
-                view -> appUpdateManager.completeUpdate());
+        Snackbar snackbar = Snackbar.make(
+                findViewById(android.R.id.content).getRootView(),
+                getResources().getString(R.string.update_downloaded_message),
+                Snackbar.LENGTH_INDEFINITE
+        );
+        snackbar.setAction(
+                getResources().getString(R.string.update_restart_action),
+                view -> appUpdateManager.completeUpdate()
+        );
         snackbar.show();
     }
 
