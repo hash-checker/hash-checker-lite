@@ -14,7 +14,7 @@
     <string name="message_do_not_match_result">Keine Übereinstimmung!</string>
     <string name="message_generate_dialog">Hash wird generiert, bitte warten …</string>
     <string name="message_select_object">Auf \"Von\" tippen, um die gewünschte Quelle auszuwählen</string>
-    <string name="message_error_start_file_selector">Kann keinen Dateimanager finden…</string>
+    <string name="message_error_start_file_selector">Kann keinen Dateimanager finden...</string>
     <string name="message_error_start_google_play">Google Play-Dienste oder Webbrowser nicht gefunden!</string>
     <string name="message_email_app_chooser">Wähle Deine App zum Senden einer E-Mail</string>
     <string name="message_change_theme">Anwendung neu starten, um die Farbe zu ändern</string>
@@ -59,6 +59,11 @@
     <string name="feedback_manufacturer">Hersteller</string>
     <string name="feedback_model">Modell</string>
     <string name="feedback_message">Mitteilung</string>
+    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Hash-Wert in die Zwischenablage kopiert</string>
+    <!-- rate app -->
+    <!-- in-app updates -->
+    <string name="update_downloaded_message">Ein Update wurde gerade heruntergeladen</string>
+    <string name="update_restart_action">Neu starten</string>
 </resources>

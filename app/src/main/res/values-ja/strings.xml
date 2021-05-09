@@ -12,7 +12,7 @@
     <string name="message_generate_hash_before_export">エクスポート前にハッシュ値を生成する</string>
     <string name="message_match_result">マッチ</string>
     <string name="message_do_not_match_result">非マッチ</string>
-    <string name="message_generate_dialog">ハッシュを生成しています。お待ちください…</string>
+    <string name="message_generate_dialog">ハッシュを生成しています。お待ちください...</string>
     <string name="message_select_object">[差出人]をタップして、必要なソースタイプを選択します</string>
     <string name="message_error_start_file_selector">あなたのデバイス上でファイルマネージャーが見つかりませんでした。</string>
     <string name="message_error_start_google_play">あなたのデバイスにGoogle Play Appまたはウェブブラウザが見つかりませんでした。</string>
@@ -59,6 +59,11 @@
     <string name="feedback_manufacturer">メーカー</string>
     <string name="feedback_model">モデル</string>
     <string name="feedback_message">メッセージ</string>
+    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">クリップボードにコピーされたハッシュ値</string>
+    <!-- rate app -->
+    <!-- in-app updates -->
+    <string name="update_downloaded_message">アップデートがダウンロードされました</string>
+    <string name="update_restart_action">再起動</string>
 </resources>

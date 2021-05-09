@@ -59,6 +59,11 @@
     <string name="feedback_manufacturer">生产厂家</string>
     <string name="feedback_model">模型</string>
     <string name="feedback_message">信息</string>
+    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">将哈希值复制到剪切板</string>
+    <!-- rate app -->
+    <!-- in-app updates -->
+    <string name="update_downloaded_message">刚刚下载了一个更新</string>
+    <string name="update_restart_action">重新开始</string>
 </resources>

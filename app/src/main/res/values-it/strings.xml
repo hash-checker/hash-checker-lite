@@ -59,6 +59,11 @@
     <string name="feedback_manufacturer">Fabbricante</string>
     <string name="feedback_model">Modella</string>
     <string name="feedback_message">Messaggio</string>
+    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Hash copiato nella clipoard</string>
+    <!-- rate app -->
+    <!-- in-app updates -->
+    <string name="update_downloaded_message">È stato appena scaricato un aggiornamento</string>
+    <string name="update_restart_action">Ricomincia</string>
 </resources>

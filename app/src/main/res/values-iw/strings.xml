@@ -59,6 +59,11 @@
     <string name="feedback_manufacturer">יצרן</string>
     <string name="feedback_model">דוגמנית</string>
     <string name="feedback_message">הודעה</string>
+    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">ערך Hash מועתק ללוח</string>
+    <!-- rate app -->
+    <!-- in-app updates -->
+    <string name="update_downloaded_message">זה עתה הורד עדכון</string>
+    <string name="update_restart_action">איתחול</string>
 </resources>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
 <resources>
     <!-- menu -->
     <string name="menu_title_settings">Cài đặt</string>
@@ -12,7 +12,7 @@
     <string name="message_generate_hash_before_export">Tạo giá trị băm trước khi xác nhận</string>
     <string name="message_match_result">So sánh</string>
     <string name="message_do_not_match_result">Không thể so sánh được</string>
-    <string name="message_generate_dialog">Đang tạo mã băm, vui lòng chờ…</string>
+    <string name="message_generate_dialog">Đang tạo mã băm, vui lòng chờ...</string>
     <string name="message_select_object">Nhấn vào \"Kho dữ liệu\" để chọn file cần thiết</string>
     <string name="message_error_start_file_selector">Không thể tìm thấy trình quản lý tệp trên thiết bị của bạn</string>
     <string name="message_error_start_google_play">Không thể tìm thấy ứng dụng Google Play hoặc trình duyệt web trên thiết bị của bạn</string>
@@ -55,10 +55,15 @@
     <string name="settings_title_language">Ngôn ngữ</string>
     <string name="settings_title_support">Hỗ trợ</string>
     <string name="settings_title_help_with_translation">Giúp chúng tôi dịch ứng dụng</string>
-    <!-- history -->
-    <string name="history_item_click_text">Giá trị băm đã được sao chép vào khay nhớ tạm</string>
     <!-- feedback -->
     <string name="feedback_manufacturer">Nhà sản xuất</string>
     <string name="feedback_model">Mô hình</string>
     <string name="feedback_message">Nhắn tin</string>
+    <!-- file manager -->
+    <!-- history -->
+    <string name="history_item_click_text">Giá trị băm đã được sao chép vào khay nhớ tạm</string>
+    <!-- rate app -->
+    <!-- in-app updates -->
+    <string name="update_downloaded_message">Bản cập nhật vừa được tải xuống</string>
+    <string name="update_restart_action">Khởi động lại</string>
 </resources>

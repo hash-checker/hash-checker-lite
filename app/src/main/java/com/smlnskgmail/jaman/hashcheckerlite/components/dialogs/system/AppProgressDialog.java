@@ -24,6 +24,7 @@ public class AppProgressDialog {
         this.themeHelper = themeHelper;
     }
 
+    @NonNull
     public ProgressDialog build() {
         android.app.ProgressDialog progressDialog
                 = new android.app.ProgressDialog(context);

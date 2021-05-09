@@ -59,6 +59,11 @@
     <string name="feedback_manufacturer">Producent</string>
     <string name="feedback_model">Model</string>
     <string name="feedback_message">Wiadomość</string>
+    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Wartość skrótu skopiowana do schowka</string>
+    <!-- rate app -->
+    <!-- in-app updates -->
+    <string name="update_downloaded_message">Aktualizacja została właśnie pobrana</string>
+    <string name="update_restart_action">Uruchom ponownie</string>
 </resources>

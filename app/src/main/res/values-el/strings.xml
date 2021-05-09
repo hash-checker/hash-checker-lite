@@ -59,6 +59,11 @@
     <string name="feedback_manufacturer">Κατασκευαστής</string>
     <string name="feedback_model">Μοντέλο</string>
     <string name="feedback_message">Μήνυμα</string>
+    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Η τιμή Hash αντιγράφηκε στο πρόχειρο</string>
+    <!-- rate app -->
+    <!-- in-app updates -->
+    <string name="update_downloaded_message">Μόλις πραγματοποιήθηκε λήψη μιας ενημέρωσης</string>
+    <string name="update_restart_action">Επανεκκίνηση</string>
 </resources>
