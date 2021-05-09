@@ -29,8 +29,8 @@ import org.junit.runners.Suite;
         CRC32JdkHashCalculatorTest.class,
         MessageDigestZeroLeadsJdkHashCalculatorTest.class,
         GenerateHashFromTextTest.class,
-        OpenAppWithIntentTest.class,
-        OpenAppWithClipDataTest.class,
+//        OpenAppWithIntentTest.class,
+//        OpenAppWithClipDataTest.class,
         FeedbackTest.class,
         ClipboardTest.class,
         ScreenRunnerTest.class
