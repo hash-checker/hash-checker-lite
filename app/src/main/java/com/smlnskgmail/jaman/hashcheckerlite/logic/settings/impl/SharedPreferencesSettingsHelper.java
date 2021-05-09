@@ -15,10 +15,6 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.Theme;
 
 public class SharedPreferencesSettingsHelper implements SettingsHelper {
 
-    public static final int FILE_CREATE = 3;
-
-    private static final int HASH_GENERATION_COUNT_BEFORE_RATE_APP_DIALOG_CALL = 5;
-
     private final Context context;
 
     public SharedPreferencesSettingsHelper(
@@ -50,13 +46,6 @@ public class SharedPreferencesSettingsHelper implements SettingsHelper {
             L.e(e);
             return HashType.MD5;
         }
-    }
-
-    @Override
-    public boolean languageIsInitialized() {
-        return containsPreference(
-                context.getString(R.string.key_language)
-        );
     }
 
     @Override

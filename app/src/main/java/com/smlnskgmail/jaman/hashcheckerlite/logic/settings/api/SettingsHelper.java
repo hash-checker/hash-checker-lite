@@ -8,12 +8,12 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.Theme;
 
 public interface SettingsHelper {
 
+    int FILE_CREATE = 3;
+
     void saveHashTypeAsLast(@NonNull HashType hashType);
 
     @NonNull
     HashType getLastHashType();
-
-    boolean languageIsInitialized();
 
     void saveLanguage(@NonNull Language language);
 

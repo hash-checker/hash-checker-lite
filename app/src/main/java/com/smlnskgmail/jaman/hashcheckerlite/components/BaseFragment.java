@@ -45,7 +45,6 @@ public abstract class BaseFragment extends Fragment
         appResume();
     }
 
-    @Override
     public void appResume() {
         if (actionBar == null) {
             actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();

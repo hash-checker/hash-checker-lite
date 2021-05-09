@@ -13,8 +13,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.smlnskgmail.jaman.hashcheckerlite.di.components.AppComponent;
+import com.smlnskgmail.jaman.hashcheckerlite.di.components.DaggerAppComponent;
+import com.smlnskgmail.jaman.hashcheckerlite.di.modules.LangHelperModule;
+import com.smlnskgmail.jaman.hashcheckerlite.di.modules.SettingsHelperModule;
+import com.smlnskgmail.jaman.hashcheckerlite.di.modules.ThemeHelperModule;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.impl.LangHelperImpl;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.impl.SharedPreferencesSettingsHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.impl.ThemeHelperImpl;
 
 import java.util.Arrays;
 
@@ -36,6 +43,33 @@ public class App extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        settingsHelper = new SharedPreferencesSettingsHelper(this);
+        langHelper = new LangHelperImpl(
+                this,
+                settingsHelper
+        );
+        setTheme(settingsHelper.getSelectedTheme().getThemeResId());
+        appComponent = DaggerAppComponent
+                .builder()
+                .settingsHelperModule(
+                        new SettingsHelperModule(
+                                settingsHelper
+                        )
+                )
+                .langHelperModule(
+                        new LangHelperModule(
+                                langHelper
+                        )
+                )
+                .themeHelperModule(
+                        new ThemeHelperModule(
+                                new ThemeHelperImpl(
+                                        this,
+                                        settingsHelper
+                                )
+                        )
+                )
+                .build();
         if (!settingsHelper.isShortcutsIsCreated()) {
             createShortcuts();
             settingsHelper.saveShortcutsStatus(true);

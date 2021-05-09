@@ -1,5 +1,6 @@
 package com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 
@@ -23,7 +24,7 @@ public class AppProgressDialog {
         this.themeHelper = themeHelper;
     }
 
-    public void show() {
+    public ProgressDialog build() {
         android.app.ProgressDialog progressDialog
                 = new android.app.ProgressDialog(context);
         progressDialog.setMessage(
@@ -38,7 +39,7 @@ public class AppProgressDialog {
                         themeHelper.getCommonBackgroundColor()
                 )
         );
-        progressDialog.show();
+        return progressDialog;
     }
 
 }

@@ -43,7 +43,6 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hasht
 import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.impl.SharedPreferencesSettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.support.Clipboard;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 
@@ -169,11 +168,13 @@ public class HashCalculatorFragment extends BaseFragment
             HashType hashType = HashType.getHashTypeFromString(
                     tvSelectedHashType.getText().toString()
             );
-            new AppProgressDialog(
+            progressDialog = new AppProgressDialog(
                     context,
                     R.string.message_generate_dialog,
                     themeHelper
-            ).show();
+            ).build();
+            progressDialog.show();
+            ;
             if (isTextSelected) {
                 new HashCalculatorTask(
                         context,
@@ -251,7 +252,7 @@ public class HashCalculatorFragment extends BaseFragment
             );
             startActivityForResult(
                     saveTextFileIntent,
-                    SharedPreferencesSettingsHelper.FILE_CREATE
+                    SettingsHelper.FILE_CREATE
             );
         } catch (ActivityNotFoundException e) {
             L.e(e);

@@ -19,6 +19,12 @@
         <item name="android:tint">?attr/colorAccent</item>
     </style>
 
+    <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="android:textSize">@dimen/text_size_large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="AppCircleButton" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="android:background">@drawable/bg_button</item>
         <item name="android:foreground">?selectableItemBackground</item>

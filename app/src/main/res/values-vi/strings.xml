@@ -55,6 +55,8 @@
     <string name="settings_title_language">Ngôn ngữ</string>
     <string name="settings_title_support">Hỗ trợ</string>
     <string name="settings_title_help_with_translation">Giúp chúng tôi dịch ứng dụng</string>
+    <!-- history -->
+    <string name="history_item_click_text">Giá trị băm đã được sao chép vào khay nhớ tạm</string>
     <!-- feedback -->
     <string name="feedback_manufacturer">Nhà sản xuất</string>
     <string name="feedback_model">Mô hình</string>
