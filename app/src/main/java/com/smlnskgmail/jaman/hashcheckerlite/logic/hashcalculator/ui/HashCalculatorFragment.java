@@ -40,12 +40,15 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.actio
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.actions.ui.SourceSelectActionsBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hashtypes.GenerateToBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hashtypes.HashTypeSelectTarget;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.SettingsHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.support.Clipboard;
-import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 
 import java.io.File;
+
+import javax.inject.Inject;
 
 public class HashCalculatorFragment extends BaseFragment
         implements TextValueTarget, UserActionTarget, HashTypeSelectTarget {
@@ -54,6 +57,15 @@ public class HashCalculatorFragment extends BaseFragment
 
     private static final int TEXT_MULTILINE_LINES_COUNT = 3;
     private static final int TEXT_SINGLE_LINE_LINES_COUNT = 1;
+
+    @Inject
+    SettingsHelper settingsHelper;
+
+    @Inject
+    LangHelper langHelper;
+
+    @Inject
+    ThemeHelper themeHelper;
 
     private View mainScreen;
 
@@ -91,6 +103,14 @@ public class HashCalculatorFragment extends BaseFragment
         }
     };
 
+    // CPD-OFF
+    @Override
+    public void onAttach(@NonNull Context context) {
+        App.appComponent.inject(this);
+        super.onAttach(context);
+    }
+    // CPD-ON
+
     private void showSnackbarWithoutAction(
             @NonNull String message
     ) {
@@ -98,9 +118,7 @@ public class HashCalculatorFragment extends BaseFragment
                 context,
                 mainScreen,
                 message,
-                UIUtils.getAccentColor(
-                        context
-                )
+                themeHelper
         ).show();
     }
 
@@ -150,11 +168,13 @@ public class HashCalculatorFragment extends BaseFragment
             HashType hashType = HashType.getHashTypeFromString(
                     tvSelectedHashType.getText().toString()
             );
-            progressDialog = AppProgressDialog.getDialog(
+            progressDialog = new AppProgressDialog(
                     context,
-                    R.string.message_generate_dialog
-            );
+                    R.string.message_generate_dialog,
+                    themeHelper
+            ).build();
             progressDialog.show();
+            ;
             if (isTextSelected) {
                 new HashCalculatorTask(
                         context,
@@ -350,14 +370,12 @@ public class HashCalculatorFragment extends BaseFragment
                 message,
                 actionText,
                 action,
-                UIUtils.getAccentColor(
-                        context
-                )
+                themeHelper
         ).show();
     }
 
     private void validateTextCase() {
-        boolean useUpperCase = SettingsHelper.useUpperCase(context);
+        boolean useUpperCase = settingsHelper.useUpperCase();
         InputFilter[] fieldFilters = useUpperCase
                 ? new InputFilter[]{new InputFilter.AllCaps()}
                 : new InputFilter[]{};
@@ -387,8 +405,7 @@ public class HashCalculatorFragment extends BaseFragment
         tvSelectedHashType.setText(
                 hashType.getTypeAsString()
         );
-        SettingsHelper.saveHashTypeAsLast(
-                context,
+        settingsHelper.saveHashTypeAsLast(
                 hashType
         );
     }
@@ -444,7 +461,7 @@ public class HashCalculatorFragment extends BaseFragment
 
         fragmentManager = getActivity().getSupportFragmentManager();
         tvSelectedHashType.setText(
-                SettingsHelper.getLastHashType(context).getTypeAsString()
+                settingsHelper.getLastHashType().getTypeAsString()
         );
         tvSelectedObjectName.setMovementMethod(
                 new ScrollingMovementMethod()
@@ -461,6 +478,12 @@ public class HashCalculatorFragment extends BaseFragment
         if (checkArguments(bundle)) {
             checkExternalDataPresence(bundle);
         }
+    }
+
+    @NonNull
+    @Override
+    protected LangHelper langHelper() {
+        return langHelper;
     }
 
     @NonNull
@@ -557,12 +580,12 @@ public class HashCalculatorFragment extends BaseFragment
         checkMultilinePreference();
         checkFileManagerChanged();
         hashTypeSelect(
-                SettingsHelper.getLastHashType(context)
+                settingsHelper.getLastHashType()
         );
     }
 
     private void checkMultilinePreference() {
-        if (SettingsHelper.isUsingMultilineHashFields(context)) {
+        if (settingsHelper.isUsingMultilineHashFields()) {
             validateMultilineFields(
                     etCustomHash,
                     TEXT_MULTILINE_LINES_COUNT,
@@ -599,13 +622,13 @@ public class HashCalculatorFragment extends BaseFragment
     }
 
     private void checkFileManagerChanged() {
-        if (SettingsHelper.refreshSelectedFile(context)) {
+        if (settingsHelper.refreshSelectedFile()) {
             if (!isTextSelected && fileUri != null) {
                 fileUri = null;
                 tvSelectedObjectName.setText(getString(R.string.message_select_object));
                 btnGenerateFrom.setText(getString(R.string.action_from));
             }
-            SettingsHelper.setRefreshSelectedFileStatus(context, false);
+            settingsHelper.setRefreshSelectedFileStatus(false);
         }
     }
 
@@ -619,10 +642,7 @@ public class HashCalculatorFragment extends BaseFragment
             if (requestCode == FILE_SELECT) {
                 if (resultCode == Activity.RESULT_OK) {
                     validateSelectedFile(data.getData());
-                    SettingsHelper.setGenerateFromShareIntentMode(
-                            context,
-                            false
-                    );
+                    settingsHelper.setGenerateFromShareIntentMode(false);
                 }
             }
         }

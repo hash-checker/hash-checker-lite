@@ -1,7 +1,6 @@
 package com.smlnskgmail.jaman.hashcheckerlite;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
@@ -13,11 +12,18 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.SettingsHelper;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.languages.Language;
+import com.smlnskgmail.jaman.hashcheckerlite.di.components.AppComponent;
+import com.smlnskgmail.jaman.hashcheckerlite.di.components.DaggerAppComponent;
+import com.smlnskgmail.jaman.hashcheckerlite.di.modules.LangHelperModule;
+import com.smlnskgmail.jaman.hashcheckerlite.di.modules.SettingsHelperModule;
+import com.smlnskgmail.jaman.hashcheckerlite.di.modules.ThemeHelperModule;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.impl.LangHelperImpl;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.impl.SharedPreferencesSettingsHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.impl.ThemeHelperImpl;
 
 import java.util.Arrays;
-import java.util.Locale;
 
 public class App extends android.app.Application {
 
@@ -26,20 +32,49 @@ public class App extends android.app.Application {
     public static final String ACTION_START_WITH_FILE
             = "com.smlnskgmail.jaman.hashcheckerlite.ACTION_START_WITH_FILE";
 
+    public static AppComponent appComponent;
+
     private static final String SHORTCUT_TEXT_ID = "shortcut_text";
     private static final String SHORTCUT_FILE_ID = "shortcut_file";
+
+    private SettingsHelper settingsHelper;
+    private LangHelper langHelper;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        if (!SettingsHelper.isShortcutsIsCreated(this)) {
+        settingsHelper = new SharedPreferencesSettingsHelper(this);
+        langHelper = new LangHelperImpl(
+                this,
+                settingsHelper
+        );
+        setTheme(settingsHelper.getSelectedTheme().getThemeResId());
+        appComponent = DaggerAppComponent
+                .builder()
+                .settingsHelperModule(
+                        new SettingsHelperModule(
+                                settingsHelper
+                        )
+                )
+                .langHelperModule(
+                        new LangHelperModule(
+                                langHelper
+                        )
+                )
+                .themeHelperModule(
+                        new ThemeHelperModule(
+                                new ThemeHelperImpl(
+                                        this,
+                                        settingsHelper
+                                )
+                        )
+                )
+                .build();
+        if (!settingsHelper.isShortcutsIsCreated()) {
             createShortcuts();
-            SettingsHelper.saveShortcutsStatus(
-                    this,
-                    true
-            );
+            settingsHelper.saveShortcutsStatus(true);
         }
-        setLocale(getApplicationContext());
+        langHelper.applyLanguage(this);
     }
 
     private void createShortcuts() {
@@ -108,32 +143,12 @@ public class App extends android.app.Application {
                 .build();
     }
 
-    private void setLocale(@NonNull Context context) {
-        Language language = null;
-        if (!SettingsHelper.languageIsInitialized(context)) {
-            String deviceLocale = Locale.getDefault().toString();
-            for (Language lang : Language.values()) {
-                if (deviceLocale.equals(lang.code())) {
-                    language = lang;
-                    break;
-                }
-            }
-            if (language == null) {
-                language = Language.EN;
-            }
-            SettingsHelper.saveLanguage(
-                    context,
-                    language
-            );
-        }
-    }
-
     @Override
     public void onConfigurationChanged(
             @NonNull Configuration newConfig
     ) {
         super.onConfigurationChanged(newConfig);
-        setLocale(getApplicationContext());
+        langHelper.applyLanguage(this);
     }
 
 }

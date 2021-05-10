@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.bottomsheets.lists.ListItem;
-import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 
 import static com.smlnskgmail.jaman.hashcheckerlite.components.bottomsheets.lists.ListItem.DEFAULT_ICON_VALUE;
 
@@ -22,15 +22,18 @@ public abstract class BaseListHolder<T extends ListItem> extends RecyclerView.Vi
     private final ImageView ivItemAdditionalIcon;
 
     private final Context context;
+    private final ThemeHelper themeHelper;
 
     protected BaseListHolder(
             @NonNull Context themeContext,
-            @NonNull View itemView
+            @NonNull View itemView,
+            @NonNull ThemeHelper themeHelper
     ) {
         super(itemView);
 
         // Context with current theme
         context = themeContext;
+        this.themeHelper = themeHelper;
         tvItemTitle = itemView.findViewById(R.id.tv_item_list_title);
         ivItemPrimaryIcon = itemView.findViewById(R.id.iv_item_list_icon);
         ivItemAdditionalIcon = itemView.findViewById(
@@ -48,8 +51,7 @@ public abstract class BaseListHolder<T extends ListItem> extends RecyclerView.Vi
             ivItemPrimaryIcon.setImageResource(
                     listItem.getPrimaryIconResId()
             );
-            UIUtils.applyAccentColorToImage(
-                    context,
+            themeHelper.applyAccentColorToImage(
                     ivItemPrimaryIcon.getDrawable()
             );
         }
@@ -63,8 +65,7 @@ public abstract class BaseListHolder<T extends ListItem> extends RecyclerView.Vi
             ivItemAdditionalIcon.setImageResource(
                     listItem.getAdditionalIconResId()
             );
-            UIUtils.applyAccentColorToImage(
-                    context,
+            themeHelper.applyAccentColorToImage(
                     ivItemAdditionalIcon.getDrawable()
             );
         }

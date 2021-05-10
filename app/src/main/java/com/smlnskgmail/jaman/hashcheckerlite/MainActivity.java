@@ -3,7 +3,6 @@ package com.smlnskgmail.jaman.hashcheckerlite;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.net.Uri;
@@ -19,7 +18,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
@@ -30,19 +28,57 @@ import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppBackClickTarge
 import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppResumeTarget;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.feedback.FeedbackFragment;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.HashCalculatorFragment;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.SettingsHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.SettingsFragment;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
+
+import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity {
 
     public static final String URI_FROM_EXTERNAL_APP
             = "com.smlnskgmail.jaman.hashcheckerlite.URI_FROM_EXTERNAL_APP";
-  
+
     private static final int MENU_ITEM_SETTINGS = R.id.menu_main_section_settings;
     private static final int MENU_ITEM_FEEDBACK = R.id.menu_main_section_feedback;
 
     private static final int REQUEST_APP_UPDATE = 1;
+
+    @Inject
+    SettingsHelper settingsHelper;
+
+    @Inject
+    LangHelper langHelper;
+
+    @Inject
+    ThemeHelper themeHelper;
+
     private AppUpdateManager appUpdateManager;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        App.appComponent.inject(this);
+        super.onCreate(savedInstanceState);
+    }
+
+    @NonNull
+    @Override
+    protected SettingsHelper settingsHelper() {
+        return settingsHelper;
+    }
+
+    @NonNull
+    @Override
+    protected LangHelper langHelper() {
+        return langHelper;
+    }
+
+    @NonNull
+    @Override
+    protected ThemeHelper themeHelper() {
+        return themeHelper;
+    }
 
     @Override
     public void create() {
@@ -66,46 +102,32 @@ public class MainActivity extends BaseActivity {
                             intent.getData()
                     )
             );
-            SettingsHelper.setGenerateFromShareIntentMode(
-                    this,
-                    true
-            );
+            settingsHelper.setGenerateFromShareIntentMode(true);
         } else if (externalFileUri != null) {
             mainFragment.setArguments(
                     getConfiguredBundleWithDataUri(
                             externalFileUri
                     )
             );
-            SettingsHelper.setGenerateFromShareIntentMode(
-                    this,
-                    true
-            );
+            settingsHelper.setGenerateFromShareIntentMode(true);
         } else if (intent != null) {
             mainFragment.setArguments(
                     getBundleForShortcutAction(
                             intent.getAction()
                     )
             );
-            SettingsHelper.setGenerateFromShareIntentMode(
-                    this,
-                    false
-            );
+            settingsHelper.setGenerateFromShareIntentMode(false);
         }
-
         showFragment(mainFragment);
-
         checkForUpdateAvailability();
     }
 
-    // Checks that the update is not stalled during onResume().
     @Override
     protected void onResume() {
         super.onResume();
         appUpdateManager
                 .getAppUpdateInfo()
                 .addOnSuccessListener(appUpdateInfo -> {
-                    // If the update is downloaded but not installed,
-                    // notify the user to complete the update.
                     if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
                         popupSnackbarForCompleteUpdate();
                     }
@@ -203,43 +225,34 @@ public class MainActivity extends BaseActivity {
         appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
             if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
                     && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
-                // Request the update.
-                requestUpdate(appUpdateInfo, AppUpdateType.FLEXIBLE, this, REQUEST_APP_UPDATE);
+                requestUpdate(appUpdateInfo);
             }
         });
     }
 
-    private void requestUpdate(AppUpdateInfo appUpdateInfo, int updateType, Context context, int requestCode) {
-
-        // monitor the state of an update
-        InstallStateUpdatedListener listener = state -> {
-            if (state.installStatus() == InstallStatus.DOWNLOADED) {
-                // After the update is downloaded, show a snackbar
-                // and request user confirmation to restart the app.
-                popupSnackbarForCompleteUpdate();
-            }
-        };
-
+    private void requestUpdate(@NonNull AppUpdateInfo appUpdateInfo) {
         try {
             appUpdateManager.startUpdateFlowForResult(
                     appUpdateInfo,
-                    updateType,
-                    (Activity) context,
-                    requestCode);
+                    AppUpdateType.FLEXIBLE,
+                    this,
+                    REQUEST_APP_UPDATE
+            );
         } catch (IntentSender.SendIntentException e) {
             e.printStackTrace();
         }
     }
 
-    // Displays the snackbar notification and call to action.
     private void popupSnackbarForCompleteUpdate() {
-        Snackbar snackbar =
-                Snackbar.make(
-                        findViewById(android.R.id.content).getRootView(),
-                        getResources().getString(R.string.update_downloaded_message),
-                        Snackbar.LENGTH_INDEFINITE);
-        snackbar.setAction(getResources().getString(R.string.update_restart_action),
-                view -> appUpdateManager.completeUpdate());
+        Snackbar snackbar = Snackbar.make(
+                findViewById(android.R.id.content).getRootView(),
+                getResources().getString(R.string.update_downloaded_message),
+                Snackbar.LENGTH_INDEFINITE
+        );
+        snackbar.setAction(
+                getResources().getString(R.string.update_restart_action),
+                view -> appUpdateManager.completeUpdate()
+        );
         snackbar.show();
     }
 

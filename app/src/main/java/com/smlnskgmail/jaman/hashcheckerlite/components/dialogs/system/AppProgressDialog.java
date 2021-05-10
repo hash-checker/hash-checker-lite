@@ -1,23 +1,31 @@
 package com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 
-import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 
 public class AppProgressDialog {
 
-    @NonNull
-    @SuppressLint("ResourceType")
-    public static ProgressDialog getDialog(
+    private final Context context;
+    private final int textMessageResId;
+    private final ThemeHelper themeHelper;
+
+    public AppProgressDialog(
             @NonNull Context context,
-            @IdRes int textMessageResId
+            int textMessageResId,
+            @NonNull ThemeHelper themeHelper
     ) {
+        this.context = context;
+        this.textMessageResId = textMessageResId;
+        this.themeHelper = themeHelper;
+    }
+
+    @NonNull
+    public ProgressDialog build() {
         android.app.ProgressDialog progressDialog
                 = new android.app.ProgressDialog(context);
         progressDialog.setMessage(
@@ -29,9 +37,7 @@ public class AppProgressDialog {
         progressDialog.setCancelable(false);
         progressDialog.getWindow().setBackgroundDrawable(
                 new ColorDrawable(
-                        UIUtils.getCommonBackgroundColor(
-                                context
-                        )
+                        themeHelper.getCommonBackgroundColor()
                 )
         );
         return progressDialog;

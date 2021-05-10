@@ -1,6 +1,7 @@
 package com.smlnskgmail.jaman.hashcheckerlite.logic.feedback;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -14,12 +15,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ShareCompat;
 
+import com.smlnskgmail.jaman.hashcheckerlite.App;
 import com.smlnskgmail.jaman.hashcheckerlite.BuildConfig;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
 
+import javax.inject.Inject;
+
 public class FeedbackFragment extends BaseFragment {
+
+    @Inject
+    LangHelper langHelper;
 
     private final String osVersion = Build.VERSION.RELEASE;
     private final String manufacturer = Build.MANUFACTURER;
@@ -34,6 +42,14 @@ public class FeedbackFragment extends BaseFragment {
             manufacturer,
             model
     );
+
+    // CPD-OFF
+    @Override
+    public void onAttach(@NonNull Context context) {
+        App.appComponent.inject(this);
+        super.onAttach(context);
+    }
+    // CPD-ON
 
     @Override
     public void onViewCreated(
@@ -65,6 +81,12 @@ public class FeedbackFragment extends BaseFragment {
         );
     }
 
+    @NonNull
+    @Override
+    protected LangHelper langHelper() {
+        return langHelper;
+    }
+
     private void applyInfoToTextView(
             @NonNull View contentView,
             int textViewResId,
@@ -79,12 +101,15 @@ public class FeedbackFragment extends BaseFragment {
             getActivity().onBackPressed();
             return true;
         } else if (item.getItemId() == R.id.menu_action_send_feedback) {
-            sendEmail(
-                    feedback.getConfiguredMessage(
-                            etFeedbackText.getText().toString()
-                    ),
-                    getString(R.string.common_email)
-            );
+            String message = etFeedbackText.getText().toString();
+            if (!message.isEmpty()) {
+                sendEmail(
+                        feedback.getConfiguredMessage(
+                                etFeedbackText.getText().toString()
+                        ),
+                        getString(R.string.common_email)
+                );
+            }
         }
         return super.onOptionsItemSelected(item);
     }

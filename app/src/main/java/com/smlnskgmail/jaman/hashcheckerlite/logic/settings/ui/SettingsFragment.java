@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.smlnskgmail.jaman.hashcheckerlite.App;
 import com.smlnskgmail.jaman.hashcheckerlite.BuildConfig;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppSnackbar;
@@ -28,17 +29,31 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.languages.L
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.themes.ThemesBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.weblinks.AuthorWebLinksBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.weblinks.PrivacyPolicyWebLinksBottomSheet;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.WebUtils;
 
+import javax.inject.Inject;
+
 public class SettingsFragment extends PreferenceFragmentCompat implements AppBackClickTarget {
+
+    @Inject
+    ThemeHelper themeHelper;
 
     private ActionBar actionBar;
     private FragmentManager fragmentManager;
     private Context context;
 
-    @SuppressLint("ResourceType")
+    // CPD-OFF
+    @Override
+    public void onAttach(@NonNull Context context) {
+        App.appComponent.inject(this);
+        super.onAttach(context);
+    }
+    // CPD-ON
+
     @SuppressWarnings("MethodParametersAnnotationCheck")
+    @SuppressLint("ResourceType")
     @Override
     public void onCreatePreferences(
             Bundle savedInstanceState,
@@ -105,15 +120,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
                 });
     }
 
-    private void showSnackbar(@NonNull String message) {
-        new AppSnackbar(
-                context,
-                getView(),
-                message,
-                UIUtils.getAccentColor(context)
-        ).show();
-    }
-
     private void initializeAuthorLinks() {
         findPreference(getString(R.string.key_author))
                 .setOnPreferenceClickListener(preference -> {
@@ -177,6 +183,15 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
         }
     }
 
+    private void showSnackbar(@NonNull String message) {
+        new AppSnackbar(
+                context,
+                getView(),
+                message,
+                themeHelper
+        ).show();
+    }
+
     private void initializeAppVersionInfo() {
         findPreference(getString(R.string.key_version)).setSummary(
                 String.format(
@@ -195,9 +210,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
         view.setBackgroundColor(
-                UIUtils.getCommonBackgroundColor(
-                        context
-                )
+                themeHelper.getCommonBackgroundColor()
         );
         setDividerHeight(0);
     }
@@ -205,10 +218,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
     @Override
     public void onResume() {
         super.onResume();
-        UIUtils.setActionBarTitle(
-                actionBar,
-                R.string.menu_title_settings
-        );
+        actionBar.setTitle(R.string.menu_title_settings);
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 

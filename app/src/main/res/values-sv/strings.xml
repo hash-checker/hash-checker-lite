@@ -59,6 +59,11 @@
     <string name="feedback_manufacturer">Tillverkare</string>
     <string name="feedback_model">Modell</string>
     <string name="feedback_message">Meddelande</string>
+    <!-- file manager -->
     <!-- history -->
     <string name="history_item_click_text">Hash-värde kopieras till urklipp</string>
+    <!-- rate app -->
+    <!-- in-app updates -->
+    <string name="update_downloaded_message">En uppdatering har just laddats ner</string>
+    <string name="update_restart_action">Omstart</string>
 </resources>

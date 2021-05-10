@@ -11,8 +11,8 @@ android {
         applicationId 'com.smlnskgmail.jaman.hashcheckerlite'
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 8
-        versionName '1.0.7'
+        versionCode 9
+        versionName '1.0.8'
         vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner 'com.smlnskgmail.jaman.hashcheckerlite.runner.AndroidJacocoTestRunner'
@@ -32,6 +32,7 @@ android {
                 'ru',
                 'sv',
                 'zh-rCN',
+                'vi',
                 'ja'
     }
     signingConfigs {
@@ -129,9 +130,14 @@ dependencies {
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.preference:preference:1.1.1'
 
+    // Dagger
+    implementation 'com.google.dagger:dagger:2.34.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.34.1'
+    androidTestAnnotationProcessor 'com.google.dagger:dagger-compiler:2.34.1'
+
     // Checkstyle
     checkstyle 'com.github.fartem:checkstyle-checks-java:1.1.0'
-    checkstyle 'com.github.fartem:checkstyle-checks-android:1.1.0'
+    checkstyle 'com.github.fartem:checkstyle-checks-android:1.2.3'
 
     // Unit tests
     testImplementation 'junit:junit:4.13.1'
