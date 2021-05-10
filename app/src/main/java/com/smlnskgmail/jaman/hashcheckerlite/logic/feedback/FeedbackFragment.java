@@ -20,14 +20,14 @@ import com.smlnskgmail.jaman.hashcheckerlite.BuildConfig;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 
 import javax.inject.Inject;
 
 public class FeedbackFragment extends BaseFragment {
 
     @Inject
-    LangHelper langHelper;
+    public LangHelper langHelper;
 
     private final String osVersion = Build.VERSION.RELEASE;
     private final String manufacturer = Build.MANUFACTURER;
@@ -161,7 +161,7 @@ public class FeedbackFragment extends BaseFragment {
                     )
             );
         } catch (ActivityNotFoundException e) {
-            L.e(e);
+            LogUtils.e(e);
             ShareCompat.IntentBuilder
                     .from(getActivity())
                     .setText("message/rfc822")

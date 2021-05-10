@@ -7,8 +7,6 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
-
 public class WebUtils {
 
     private WebUtils() {
@@ -27,7 +25,7 @@ public class WebUtils {
                     )
             );
         } catch (ActivityNotFoundException e) {
-            L.e(e);
+            LogUtils.e(e);
         }
     }
 

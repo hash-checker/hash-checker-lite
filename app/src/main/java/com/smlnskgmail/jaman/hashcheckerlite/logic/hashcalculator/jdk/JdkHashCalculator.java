@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashCalculator;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashType;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -57,11 +57,11 @@ public class JdkHashCalculator implements HashCalculator {
                     } while (read != -1);
                     return jdkHashCalculatorDigest.result();
                 } catch (IOException e) {
-                    L.e(e);
+                    LogUtils.e(e);
                 }
             }
         } catch (Exception e) {
-            L.e(e);
+            LogUtils.e(e);
         }
         return null;
     }

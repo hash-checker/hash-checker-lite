@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.jdk.JdkHashCalculator;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 
 public class HashCalculatorTask extends AsyncTask<Void, String, String> {
 
@@ -68,7 +68,7 @@ public class HashCalculatorTask extends AsyncTask<Void, String, String> {
                     ? hashCalculator.fromFile(context, fileUri)
                     : hashCalculator.fromString(textValue);
         } catch (Exception e) {
-            L.e(e);
+            LogUtils.e(e);
             return null;
         }
     }

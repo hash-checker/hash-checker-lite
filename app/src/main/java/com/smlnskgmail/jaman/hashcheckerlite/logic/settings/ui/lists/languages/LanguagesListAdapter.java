@@ -12,8 +12,8 @@ import com.smlnskgmail.jaman.hashcheckerlite.components.bottomsheets.lists.adapt
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppAlertDialog;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.Language;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.support.Restart;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.RestartUtils;
 
 import java.util.List;
 
@@ -71,7 +71,7 @@ public class LanguagesListAdapter extends BaseListAdapter<Language> {
                                 languageAtPosition
                         );
                         dialog.dismiss();
-                        Restart.restartApp(
+                        RestartUtils.restartApp(
                                 getBottomSheet().getActivity()
                         );
                     },
