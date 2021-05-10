@@ -31,6 +31,10 @@ Fast and simple application for generating and comparison hashes from files or t
 | SHA-256 support | + | + |
 | SHA-384 support | + | + |
 | SHA-512 support | + | + |
+| SHA3-224 support | + | |
+| SHA3-256 support | + | |
+| SHA3-384 support | + | |
+| SHA3-512 support | + | |
 | CRC-32 support | + | + |
 | Language switch | + | + |
 | Inner File Manager | + | |
