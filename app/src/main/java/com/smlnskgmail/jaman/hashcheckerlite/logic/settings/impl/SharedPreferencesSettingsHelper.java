@@ -199,13 +199,6 @@ public class SharedPreferencesSettingsHelper implements SettingsHelper {
         );
     }
 
-    private boolean containsPreference(
-            @NonNull String key
-    ) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .contains(key);
-    }
-
     private void saveStringPreference(
             @NonNull String key,
             @Nullable String value
