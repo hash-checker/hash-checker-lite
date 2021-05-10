@@ -37,13 +37,12 @@ public class App extends android.app.Application {
     private static final String SHORTCUT_TEXT_ID = "shortcut_text";
     private static final String SHORTCUT_FILE_ID = "shortcut_file";
 
-    private SettingsHelper settingsHelper;
     private LangHelper langHelper;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        settingsHelper = new SharedPreferencesSettingsHelper(this);
+        SettingsHelper settingsHelper = new SharedPreferencesSettingsHelper(this);
         langHelper = new LangHelperImpl(
                 this,
                 settingsHelper

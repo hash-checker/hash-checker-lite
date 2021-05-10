@@ -10,7 +10,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
-import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
@@ -30,6 +29,7 @@ import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment;
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppProgressDialog;
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppSnackbar;
+import com.smlnskgmail.jaman.hashcheckerlite.components.watchers.AppTextWatcher;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashCalculatorTask;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashType;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.input.TextInputDialog;
@@ -41,10 +41,10 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.actio
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hashtypes.GenerateToBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hashtypes.HashTypeSelectTarget;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.support.Clipboard;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 
 import java.io.File;
 
@@ -59,13 +59,13 @@ public class HashCalculatorFragment extends BaseFragment
     private static final int TEXT_SINGLE_LINE_LINES_COUNT = 1;
 
     @Inject
-    SettingsHelper settingsHelper;
+    public SettingsHelper settingsHelper;
 
     @Inject
-    LangHelper langHelper;
+    public LangHelper langHelper;
 
     @Inject
-    ThemeHelper themeHelper;
+    public ThemeHelper themeHelper;
 
     private View mainScreen;
 
@@ -142,6 +142,10 @@ public class HashCalculatorFragment extends BaseFragment
             case EXPORT_AS_TXT:
                 saveGeneratedHashAsTextFile();
                 break;
+            default:
+                throw new IllegalArgumentException(
+                        "Unknown UserActionType"
+                );
         }
     }
 
@@ -155,7 +159,7 @@ public class HashCalculatorFragment extends BaseFragment
                     FILE_SELECT
             );
         } catch (ActivityNotFoundException e) {
-            L.e(e);
+            LogUtils.e(e);
             showSnackbarWithoutAction(
                     getString(R.string.message_error_start_file_selector)
             );
@@ -174,7 +178,6 @@ public class HashCalculatorFragment extends BaseFragment
                     themeHelper
             ).build();
             progressDialog.show();
-            ;
             if (isTextSelected) {
                 new HashCalculatorTask(
                         context,
@@ -198,9 +201,9 @@ public class HashCalculatorFragment extends BaseFragment
     }
 
     private void compareHashes() {
-        if (TextTools.fieldIsNotEmpty(etCustomHash)
-                && TextTools.fieldIsNotEmpty(etGeneratedHash)) {
-            boolean equal = TextTools.compareText(
+        if (TextUtils.fieldIsNotEmpty(etCustomHash)
+                && TextUtils.fieldIsNotEmpty(etGeneratedHash)) {
+            boolean equal = TextUtils.compareText(
                     etCustomHash.getText().toString(),
                     etGeneratedHash.getText().toString()
             );
@@ -227,7 +230,7 @@ public class HashCalculatorFragment extends BaseFragment
 
     private void saveGeneratedHashAsTextFile() {
         if ((fileUri != null
-                || isTextSelected) && TextTools.fieldIsNotEmpty(etGeneratedHash)) {
+                || isTextSelected) && TextUtils.fieldIsNotEmpty(etGeneratedHash)) {
             String filename = getString(
                     isTextSelected
                             ? R.string.filename_hash_from_text
@@ -255,7 +258,7 @@ public class HashCalculatorFragment extends BaseFragment
                     SettingsHelper.FILE_CREATE
             );
         } catch (ActivityNotFoundException e) {
-            L.e(e);
+            LogUtils.e(e);
             showSnackbarWithoutAction(
                     getString(R.string.message_error_start_file_selector)
             );
@@ -313,7 +316,7 @@ public class HashCalculatorFragment extends BaseFragment
                         )
                 );
             } catch (Exception e) {
-                L.e(e);
+                LogUtils.e(e);
             }
         }
         return new File(uri.getPath()).getName();
@@ -383,11 +386,11 @@ public class HashCalculatorFragment extends BaseFragment
         etGeneratedHash.setFilters(fieldFilters);
 
         if (useUpperCase) {
-            TextTools.convertToUpperCase(etCustomHash);
-            TextTools.convertToUpperCase(etGeneratedHash);
+            TextUtils.convertToUpperCase(etCustomHash);
+            TextUtils.convertToUpperCase(etGeneratedHash);
         } else {
-            TextTools.convertToLowerCase(etCustomHash);
-            TextTools.convertToLowerCase(etGeneratedHash);
+            TextUtils.convertToLowerCase(etCustomHash);
+            TextUtils.convertToLowerCase(etGeneratedHash);
         }
 
         etCustomHash.setSelection(
@@ -492,17 +495,7 @@ public class HashCalculatorFragment extends BaseFragment
             @NonNull ImageView copyButton,
             @NonNull ImageView clearButton
     ) {
-        return new TextWatcher() {
-            @Override
-            public void beforeTextChanged(
-                    CharSequence s,
-                    int start,
-                    int count,
-                    int after
-            ) {
-
-            }
-
+        return new AppTextWatcher() {
             @Override
             public void onTextChanged(
                     CharSequence s,
@@ -518,11 +511,6 @@ public class HashCalculatorFragment extends BaseFragment
                     copyButton.setVisibility(View.INVISIBLE);
                     clearButton.setVisibility(View.INVISIBLE);
                 }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
             }
         };
     }
@@ -638,13 +626,11 @@ public class HashCalculatorFragment extends BaseFragment
             int resultCode,
             @Nullable Intent data
     ) {
-        if (data != null) {
-            if (requestCode == FILE_SELECT) {
-                if (resultCode == Activity.RESULT_OK) {
-                    validateSelectedFile(data.getData());
-                    settingsHelper.setGenerateFromShareIntentMode(false);
-                }
-            }
+        if (data != null
+                && requestCode == FILE_SELECT
+                && resultCode == Activity.RESULT_OK) {
+            validateSelectedFile(data.getData());
+            settingsHelper.setGenerateFromShareIntentMode(false);
         }
     }
 

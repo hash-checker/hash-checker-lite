@@ -10,7 +10,7 @@ import androidx.test.runner.AndroidJUnit4;
 
 import com.smlnskgmail.jaman.hashcheckerlite.MainActivity;
 import com.smlnskgmail.jaman.hashcheckerlite.components.matchers.TextMatcher;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -82,7 +82,7 @@ public abstract class BaseUITest {
         try {
             Thread.sleep(SECOND_IN_MILLIS);
         } catch (InterruptedException e) {
-            L.e(e);
+            LogUtils.e(e);
         }
     }
 

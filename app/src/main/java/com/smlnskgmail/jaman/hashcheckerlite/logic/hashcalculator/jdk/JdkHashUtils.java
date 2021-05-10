@@ -2,7 +2,7 @@ package com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.jdk;
 
 import androidx.annotation.NonNull;
 
-public class JdkHashTools {
+public class JdkHashUtils {
 
     private static final char[] HEX_DIGITS = "0123456789ABCDEF".toCharArray();
 

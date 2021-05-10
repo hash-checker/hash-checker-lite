@@ -10,9 +10,9 @@ import com.smlnskgmail.jaman.hashcheckerlite.components.bottomsheets.lists.BaseL
 import com.smlnskgmail.jaman.hashcheckerlite.components.bottomsheets.lists.adapter.BaseListAdapter;
 import com.smlnskgmail.jaman.hashcheckerlite.components.bottomsheets.lists.adapter.BaseListHolder;
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppAlertDialog;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.support.Restart;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.Theme;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.RestartUtils;
 
 import java.util.List;
 
@@ -76,7 +76,7 @@ public class ThemesListAdapter extends BaseListAdapter<Theme> {
                     (dialog, which) -> {
                         configureNewTheme();
                         dialog.dismiss();
-                        Restart.restartApp(
+                        RestartUtils.restartApp(
                                 getBottomSheet().getActivity()
                         );
                     },

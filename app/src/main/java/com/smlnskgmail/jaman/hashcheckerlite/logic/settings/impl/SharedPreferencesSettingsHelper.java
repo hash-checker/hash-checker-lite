@@ -9,9 +9,9 @@ import androidx.annotation.Nullable;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashType;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.Language;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.Theme;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 
 public class SharedPreferencesSettingsHelper implements SettingsHelper {
 
@@ -43,7 +43,7 @@ public class SharedPreferencesSettingsHelper implements SettingsHelper {
         try {
             return HashType.valueOf(hashValue);
         } catch (IllegalArgumentException e) {
-            L.e(e);
+            LogUtils.e(e);
             return HashType.MD5;
         }
     }
@@ -241,23 +241,6 @@ public class SharedPreferencesSettingsHelper implements SettingsHelper {
     ) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(key, defaultValue);
-    }
-
-    private void saveIntPreference(
-            @NonNull String key,
-            int value
-    ) {
-        PreferenceManager.getDefaultSharedPreferences(context)
-                .edit()
-                .putInt(key, value)
-                .apply();
-    }
-
-    private int getIntPreference(
-            @NonNull String key
-    ) {
-        return PreferenceManager.getDefaultSharedPreferences(context)
-                .getInt(key, 0);
     }
 
 }

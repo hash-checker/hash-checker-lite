@@ -5,7 +5,7 @@ import android.util.Log;
 
 import androidx.test.runner.AndroidJUnitRunner;
 
-import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -30,7 +30,7 @@ public class AndroidJacocoTestRunner extends AndroidJUnitRunner {
                         )
                 );
             } catch (IOException e1) {
-                L.e(e1);
+                LogUtils.e(e1);
             }
         }
         super.finish(resultCode, results);

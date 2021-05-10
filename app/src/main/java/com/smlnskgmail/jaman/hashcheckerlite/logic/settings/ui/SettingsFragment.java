@@ -24,12 +24,12 @@ import com.smlnskgmail.jaman.hashcheckerlite.BuildConfig;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppSnackbar;
 import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppBackClickTarget;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.logs.L;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.languages.LanguagesBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.themes.ThemesBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.weblinks.AuthorWebLinksBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.weblinks.PrivacyPolicyWebLinksBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.WebUtils;
 
@@ -38,7 +38,7 @@ import javax.inject.Inject;
 public class SettingsFragment extends PreferenceFragmentCompat implements AppBackClickTarget {
 
     @Inject
-    ThemeHelper themeHelper;
+    public ThemeHelper themeHelper;
 
     private ActionBar actionBar;
     private FragmentManager fragmentManager;
@@ -175,7 +175,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
                         )
                 );
             } catch (ActivityNotFoundException e2) {
-                L.e(e2);
+                LogUtils.e(e2);
                 showSnackbar(
                         getString(R.string.message_error_start_google_play)
                 );

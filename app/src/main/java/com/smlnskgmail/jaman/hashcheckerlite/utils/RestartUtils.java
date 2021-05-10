@@ -1,4 +1,4 @@
-package com.smlnskgmail.jaman.hashcheckerlite.logic.support;
+package com.smlnskgmail.jaman.hashcheckerlite.utils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,7 +7,11 @@ import androidx.annotation.NonNull;
 
 import com.smlnskgmail.jaman.hashcheckerlite.MainActivity;
 
-public class Restart {
+public class RestartUtils {
+
+    private RestartUtils() {
+
+    }
 
     public static void restartApp(
             @NonNull Activity activity

@@ -1,10 +1,14 @@
-package com.smlnskgmail.jaman.hashcheckerlite.logic.logs;
+package com.smlnskgmail.jaman.hashcheckerlite.utils;
 
 import androidx.annotation.NonNull;
 
 import com.smlnskgmail.jaman.hashcheckerlite.BuildConfig;
 
-public class L {
+public class LogUtils {
+
+    private LogUtils() {
+
+    }
 
     public static void e(@NonNull Throwable t) {
         if (BuildConfig.DEBUG) {

@@ -46,13 +46,13 @@ public class MainActivity extends BaseActivity {
     private static final int REQUEST_APP_UPDATE = 1;
 
     @Inject
-    SettingsHelper settingsHelper;
+    public SettingsHelper settingsHelper;
 
     @Inject
-    LangHelper langHelper;
+    public LangHelper langHelper;
 
     @Inject
-    ThemeHelper themeHelper;
+    public ThemeHelper themeHelper;
 
     private AppUpdateManager appUpdateManager;
 
