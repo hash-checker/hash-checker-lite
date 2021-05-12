@@ -27,6 +27,7 @@ import com.smlnskgmail.jaman.hashcheckerlite.App;
 import com.smlnskgmail.jaman.hashcheckerlite.MainActivity;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment;
+import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppAlertDialog;
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppProgressDialog;
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppSnackbar;
 import com.smlnskgmail.jaman.hashcheckerlite.components.watchers.AppTextWatcher;
@@ -42,9 +43,11 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hasht
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hashtypes.HashTypeSelectTarget;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
+import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.impl.SharedPreferencesSettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.support.Clipboard;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.WebUtils;
 
 import java.io.File;
 
@@ -97,6 +100,24 @@ public class HashCalculatorFragment extends BaseFragment
             );
         } else {
             etGeneratedHash.setText(hashValue);
+            SharedPreferencesSettingsHelper settingsHelper = new SharedPreferencesSettingsHelper(context);
+            if (settingsHelper.canShowRateAppDialog(context)) {
+                settingsHelper.increaseHashGenerationCount(context);
+                new AppAlertDialog(
+                        context,
+                        R.string.settings_title_rate_app,
+                        R.string.rate_app_message,
+                        R.string.rate_app_action,
+                        (dialog, which) -> WebUtils.openGooglePlay(
+                                context,
+                                getView(),
+                                themeHelper
+                        ),
+                        themeHelper
+                ).show();
+            } else {
+                settingsHelper.increaseHashGenerationCount(context);
+            }
         }
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
