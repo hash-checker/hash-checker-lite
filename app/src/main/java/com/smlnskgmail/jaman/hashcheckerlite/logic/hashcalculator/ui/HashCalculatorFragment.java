@@ -100,7 +100,6 @@ public class HashCalculatorFragment extends BaseFragment
             );
         } else {
             etGeneratedHash.setText(hashValue);
-            SharedPreferencesSettingsHelper settingsHelper = new SharedPreferencesSettingsHelper(context);
             if (settingsHelper.canShowRateAppDialog(context)) {
                 settingsHelper.increaseHashGenerationCount(context);
                 new AppAlertDialog(
