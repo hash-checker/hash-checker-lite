@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,6 +47,7 @@ public class MainActivity extends BaseActivity {
     private static final int MENU_ITEM_FEEDBACK = R.id.menu_main_section_feedback;
 
     private static final int REQUEST_APP_UPDATE = 1;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Inject
     public SettingsHelper settingsHelper;
@@ -210,13 +214,35 @@ public class MainActivity extends BaseActivity {
                 BaseFragment.CURRENT_FRAGMENT_TAG
         );
         if (fragment instanceof AppBackClickTarget) {
-            ((AppBackClickTarget) fragment).appBackClick();
+            waitForDoubleBackPressed();
         }
         for (Fragment fragmentInApp : getSupportFragmentManager().getFragments()) {
             if (fragmentInApp instanceof AppResumeTarget) {
                 ((AppResumeTarget) fragmentInApp).appResume();
             }
         }
+
+    }
+
+    private void waitForDoubleBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            Intent a = new Intent(Intent.ACTION_MAIN);
+            a.addCategory(Intent.CATEGORY_HOME);
+            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(a);
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
     private void checkForUpdateAvailability() {
