@@ -43,7 +43,6 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hasht
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.ui.lists.hashtypes.HashTypeSelectTarget;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.locale.api.LangHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
-import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.impl.SharedPreferencesSettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.support.Clipboard;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
