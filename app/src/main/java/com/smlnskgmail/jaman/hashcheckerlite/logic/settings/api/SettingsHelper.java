@@ -1,7 +1,5 @@
 package com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api;
 
-import android.content.Context;
-
 import androidx.annotation.NonNull;
 
 import com.smlnskgmail.jaman.hashcheckerlite.logic.hashcalculator.HashType;
@@ -43,7 +41,7 @@ public interface SettingsHelper {
 
     void setRefreshSelectedFileStatus(boolean status);
 
-    boolean canShowRateAppDialog(Context context);
+    boolean canShowRateAppDialog();
 
-    void increaseHashGenerationCount(Context context);
+    void increaseHashGenerationCount();
 }

@@ -99,8 +99,8 @@ public class HashCalculatorFragment extends BaseFragment
             );
         } else {
             etGeneratedHash.setText(hashValue);
-            if (settingsHelper.canShowRateAppDialog(context)) {
-                settingsHelper.increaseHashGenerationCount(context);
+            if (settingsHelper.canShowRateAppDialog()) {
+                settingsHelper.increaseHashGenerationCount();
                 new AppAlertDialog(
                         context,
                         R.string.settings_title_rate_app,
@@ -114,7 +114,7 @@ public class HashCalculatorFragment extends BaseFragment
                         themeHelper
                 ).show();
             } else {
-                settingsHelper.increaseHashGenerationCount(context);
+                settingsHelper.increaseHashGenerationCount();
             }
         }
         if (progressDialog != null && progressDialog.isShowing()) {

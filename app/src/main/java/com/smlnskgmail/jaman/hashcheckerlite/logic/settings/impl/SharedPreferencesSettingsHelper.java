@@ -200,9 +200,7 @@ public class SharedPreferencesSettingsHelper implements SettingsHelper {
         );
     }
 
-    public boolean canShowRateAppDialog(
-            @NonNull Context context
-    ) {
+    public boolean canShowRateAppDialog() {
         int hashGenerationCount = getIntPreference(
                 context,
                 context.getString(R.string.key_hash_generation_count),
@@ -211,9 +209,7 @@ public class SharedPreferencesSettingsHelper implements SettingsHelper {
         return hashGenerationCount == HASH_GENERATION_COUNT_BEFORE_RATE_APP_DIALOG_CALL;
     }
 
-    public void increaseHashGenerationCount(
-            @NonNull Context context
-    ) {
+    public void increaseHashGenerationCount() {
         int count = getIntPreference(
                 context,
                 context.getString(R.string.key_hash_generation_count),
