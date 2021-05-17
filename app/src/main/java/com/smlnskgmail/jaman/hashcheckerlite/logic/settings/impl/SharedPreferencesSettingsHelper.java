@@ -16,6 +16,7 @@ import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 public class SharedPreferencesSettingsHelper implements SettingsHelper {
 
     private final Context context;
+    private final int HASH_GENERATION_COUNT_BEFORE_RATE_APP_DIALOG_CALL = 5;
 
     public SharedPreferencesSettingsHelper(
             @NonNull Context context
@@ -199,6 +200,30 @@ public class SharedPreferencesSettingsHelper implements SettingsHelper {
         );
     }
 
+    public boolean canShowRateAppDialog() {
+        int hashGenerationCount = getIntPreference(
+                context,
+                context.getString(R.string.key_hash_generation_count),
+                0
+        );
+        return hashGenerationCount == HASH_GENERATION_COUNT_BEFORE_RATE_APP_DIALOG_CALL;
+    }
+
+    public void increaseHashGenerationCount() {
+        int count = getIntPreference(
+                context,
+                context.getString(R.string.key_hash_generation_count),
+                0
+        );
+        if (count <= HASH_GENERATION_COUNT_BEFORE_RATE_APP_DIALOG_CALL) {
+            saveIntPreference(
+                    context,
+                    context.getString(R.string.key_hash_generation_count),
+                    ++count
+            );
+        }
+    }
+
     private void saveStringPreference(
             @NonNull String key,
             @Nullable String value
@@ -234,6 +259,26 @@ public class SharedPreferencesSettingsHelper implements SettingsHelper {
     ) {
         return PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(key, defaultValue);
+    }
+
+    private void saveIntPreference(
+            @NonNull Context context,
+            @NonNull String key,
+            int value
+    ) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putInt(key, value)
+                .apply();
+    }
+
+    private int getIntPreference(
+            @NonNull Context context,
+            @NonNull String key,
+            int defaultValue
+    ) {
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getInt(key, defaultValue);
     }
 
 }

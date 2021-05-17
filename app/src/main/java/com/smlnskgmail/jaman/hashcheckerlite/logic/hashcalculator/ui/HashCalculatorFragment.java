@@ -27,6 +27,7 @@ import com.smlnskgmail.jaman.hashcheckerlite.App;
 import com.smlnskgmail.jaman.hashcheckerlite.MainActivity;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
 import com.smlnskgmail.jaman.hashcheckerlite.components.BaseFragment;
+import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppAlertDialog;
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppProgressDialog;
 import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppSnackbar;
 import com.smlnskgmail.jaman.hashcheckerlite.components.watchers.AppTextWatcher;
@@ -45,6 +46,7 @@ import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.api.SettingsHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.support.Clipboard;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
+import com.smlnskgmail.jaman.hashcheckerlite.utils.WebUtils;
 
 import java.io.File;
 
@@ -97,6 +99,23 @@ public class HashCalculatorFragment extends BaseFragment
             );
         } else {
             etGeneratedHash.setText(hashValue);
+            if (settingsHelper.canShowRateAppDialog()) {
+                settingsHelper.increaseHashGenerationCount();
+                new AppAlertDialog(
+                        context,
+                        R.string.settings_title_rate_app,
+                        R.string.rate_app_message,
+                        R.string.rate_app_action,
+                        (dialog, which) -> WebUtils.openGooglePlay(
+                                context,
+                                getView(),
+                                themeHelper
+                        ),
+                        themeHelper
+                ).show();
+            } else {
+                settingsHelper.increaseHashGenerationCount();
+            }
         }
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();

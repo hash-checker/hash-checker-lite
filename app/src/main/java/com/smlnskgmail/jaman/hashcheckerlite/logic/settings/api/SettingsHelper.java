@@ -41,4 +41,7 @@ public interface SettingsHelper {
 
     void setRefreshSelectedFileStatus(boolean status);
 
+    boolean canShowRateAppDialog();
+
+    void increaseHashGenerationCount();
 }
