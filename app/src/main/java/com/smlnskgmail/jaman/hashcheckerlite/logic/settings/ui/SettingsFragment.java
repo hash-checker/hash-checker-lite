@@ -1,10 +1,7 @@
 package com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui;
 
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,14 +19,12 @@ import androidx.preference.PreferenceFragmentCompat;
 import com.smlnskgmail.jaman.hashcheckerlite.App;
 import com.smlnskgmail.jaman.hashcheckerlite.BuildConfig;
 import com.smlnskgmail.jaman.hashcheckerlite.R;
-import com.smlnskgmail.jaman.hashcheckerlite.components.dialogs.system.AppSnackbar;
 import com.smlnskgmail.jaman.hashcheckerlite.components.states.AppBackClickTarget;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.languages.LanguagesBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.themes.ThemesBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.weblinks.AuthorWebLinksBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.settings.ui.lists.weblinks.PrivacyPolicyWebLinksBottomSheet;
 import com.smlnskgmail.jaman.hashcheckerlite.logic.themes.api.ThemeHelper;
-import com.smlnskgmail.jaman.hashcheckerlite.utils.LogUtils;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.UIUtils;
 import com.smlnskgmail.jaman.hashcheckerlite.utils.WebUtils;
 
@@ -147,49 +142,13 @@ public class SettingsFragment extends PreferenceFragmentCompat implements AppBac
     private void initializeRateButton() {
         findPreference(getString(R.string.key_rate_app))
                 .setOnPreferenceClickListener(preference -> {
-                    openGooglePlay();
+                    WebUtils.openGooglePlay(
+                            context,
+                            getView(),
+                            themeHelper
+                    );
                     return false;
                 });
-    }
-
-    private void openGooglePlay() {
-        final String appPackageName = context.getPackageName();
-        Uri link;
-        try {
-            link = Uri.parse("market://details?id=" + appPackageName);
-            context.startActivity(
-                    new Intent(
-                            Intent.ACTION_VIEW,
-                            link
-                    )
-            );
-        } catch (ActivityNotFoundException e) {
-            try {
-                link = Uri.parse(
-                        "https://play.google.com/store/apps/details?id=" + appPackageName
-                );
-                context.startActivity(
-                        new Intent(
-                                Intent.ACTION_VIEW,
-                                link
-                        )
-                );
-            } catch (ActivityNotFoundException e2) {
-                LogUtils.e(e2);
-                showSnackbar(
-                        getString(R.string.message_error_start_google_play)
-                );
-            }
-        }
-    }
-
-    private void showSnackbar(@NonNull String message) {
-        new AppSnackbar(
-                context,
-                getView(),
-                message,
-                themeHelper
-        ).show();
     }
 
     private void initializeAppVersionInfo() {
