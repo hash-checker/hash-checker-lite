@@ -66,4 +66,5 @@
     <!-- in-app updates -->
     <string name="update_downloaded_message">به روزرسانی بارگیری شده است</string>
     <string name="update_restart_action">راه اندازی مجدد</string>
+    <string name="message_double_click">لطفا برای خروج دوباره کلید بازگشت را انتخاب کنید</string>
 </resources>
