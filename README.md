@@ -19,7 +19,7 @@
 
 ## About application
 
-Fast and simple application for generating and comparison hashes from files or text. Lite version of [Hash Checker](https://github.com/hash-checker/hash-checker).
+Fast and simple application for generating and comparing hashes from file or text. Lite version of [Hash Checker](https://github.com/hash-checker/hash-checker).
 
 ## Original app and lite version comparison
 
