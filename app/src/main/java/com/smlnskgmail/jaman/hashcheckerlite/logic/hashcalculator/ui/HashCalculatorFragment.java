@@ -56,6 +56,7 @@ public class HashCalculatorFragment extends BaseFragment
         implements TextValueTarget, UserActionTarget, HashTypeSelectTarget {
 
     private static final int FILE_SELECT = 101;
+    private static final int DOUBLE_BACK_TIME = 2000;
     private boolean doubleBackToExitPressedTwice = false;
 
     private static final int TEXT_MULTILINE_LINES_COUNT = 3;
@@ -368,7 +369,7 @@ public class HashCalculatorFragment extends BaseFragment
                 public void run() {
                     doubleBackToExitPressedTwice =false;
                 }
-            }, 2000);
+            }, DOUBLE_BACK_TIME);
         }
     }
 
