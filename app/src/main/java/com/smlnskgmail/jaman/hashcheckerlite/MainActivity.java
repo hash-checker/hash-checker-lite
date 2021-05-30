@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -210,13 +211,14 @@ public class MainActivity extends BaseActivity {
                 BaseFragment.CURRENT_FRAGMENT_TAG
         );
         if (fragment instanceof AppBackClickTarget) {
-            ((AppBackClickTarget) fragment).appBackClick();
+            ((AppBackClickTarget)fragment).appBackClick();
         }
         for (Fragment fragmentInApp : getSupportFragmentManager().getFragments()) {
             if (fragmentInApp instanceof AppResumeTarget) {
                 ((AppResumeTarget) fragmentInApp).appResume();
             }
         }
+
     }
 
     private void checkForUpdateAvailability() {

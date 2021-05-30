@@ -7,7 +7,9 @@
     <string name="title_dialog_enter_text">Add text</string>
     <string name="title_warning_dialog">Warning</string>
     <!-- messages -->
+
     <string name="message_exit">Long press on back button to close the application</string>
+    <string name="message_double_click" translatable="false">Please click BACK again to exit</string>
     <string name="message_fill_fields">Fill each field for comparison</string>
     <string name="message_generate_hash_before_export">Generate hash value before export</string>
     <string name="message_match_result">Match</string>

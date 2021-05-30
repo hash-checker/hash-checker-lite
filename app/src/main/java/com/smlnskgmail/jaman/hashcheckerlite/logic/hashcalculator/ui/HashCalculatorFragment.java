@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.OpenableColumns;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -18,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -56,6 +58,8 @@ public class HashCalculatorFragment extends BaseFragment
         implements TextValueTarget, UserActionTarget, HashTypeSelectTarget {
 
     private static final int FILE_SELECT = 101;
+    private static final int DOUBLE_BACK_TIME = 2000;
+    private boolean doubleBackToExitPressedTwice = false;
 
     private static final int TEXT_MULTILINE_LINES_COUNT = 3;
     private static final int TEXT_SINGLE_LINE_LINES_COUNT = 1;
@@ -372,12 +376,20 @@ public class HashCalculatorFragment extends BaseFragment
 
     @Override
     public void appBackClick() {
-        showSnachbarWithAction(
-                getView().findViewById(R.id.fl_main_screen),
-                getString(R.string.message_exit),
-                getString(R.string.action_exit_now),
-                v -> getActivity().finish()
-        );
+        if (doubleBackToExitPressedTwice) {
+            getActivity().finish();
+        }else {
+            this.doubleBackToExitPressedTwice = true;
+            Toast.makeText(getContext(),R.string.message_double_click, Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedTwice =false;
+                }
+            }, DOUBLE_BACK_TIME);
+        }
     }
 
     private void showSnachbarWithAction(
