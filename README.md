@@ -103,3 +103,4 @@ If you don't see any error messages, submit your pull request.
 * [@firaja](https://github.com/firaja) as David Bertoldi
 * [@fu7mu4](https://github.com/fu7mu4) as fu7mu4
 * [@vipozdn](https://github.com/vipozdn) as vipozdn
+* [@yasin459](https://github.com/yasin459) as yasin moosavi
