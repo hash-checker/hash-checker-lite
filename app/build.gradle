@@ -83,8 +83,8 @@ android {
                 try {
                     storeFile file(keystoreProperties[KEYSTORE_PATH])
                     storePassword keystoreProperties[KEYSTORE_PASSWORD]
-                    keyAlias keystoreProperties[ALIAS_KEY]
-                    keyPassword keystoreProperties[PASSWORD_KEY]
+                    keyAlias keystoreProperties[KEY_ALIAS]
+                    keyPassword keystoreProperties[KEY_PASSWORD]
                 } catch (ignore) {
                     throw new InvalidUserDataException(
                             "You should define sign keys in gradle.properties or int ENV."
