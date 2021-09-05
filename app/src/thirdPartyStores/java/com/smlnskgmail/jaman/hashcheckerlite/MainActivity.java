@@ -109,12 +109,6 @@ public class MainActivity extends BaseActivity {
         showFragment(mainFragment);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
     private void showFragment(@NonNull Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .add(
@@ -200,5 +194,5 @@ public class MainActivity extends BaseActivity {
         }
 
     }
-}
 
+}
