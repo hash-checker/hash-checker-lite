@@ -117,6 +117,7 @@ android {
     productFlavors {
         thirdPartyStores {
             dimension "distribute-version"
+            applicationIdSuffix ".thirdParty"
             versionNameSuffix "-thirdParty"
         }
         googlePlay {
