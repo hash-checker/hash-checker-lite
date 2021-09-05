@@ -71,11 +71,11 @@ android {
                     )
                     keystoreProperties.put(
                             KEY_ALIAS,
-                            System.getenv(ALIAS_KEY)
+                            System.getenv(KEY_ALIAS)
                     )
                     keystoreProperties.put(
                             KEY_PASSWORD,
-                            System.getenv(PASSWORD_KEY)
+                            System.getenv(KEY_PASSWORD)
                     )
                 }
             }
