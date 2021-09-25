@@ -37,7 +37,7 @@ jobs:
       run: ./gradlew check --stacktrace
 
   tests:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     env:
       RELEASE_KEYSTORE_PATH: ${{ secrets.RELEASE_KEYSTORE_PATH }}
       RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
@@ -59,13 +59,37 @@ jobs:
       
     - name: Run Unit tests
       run: ./gradlew jacocoTestReport
-      
-    - name: Run Instrumentation tests
-      uses: reactivecircus/android-emulator-runner@v2
-      with:
-        api-level: 27
-        profile: Nexus 6
-        script: ./gradlew -Pandroid.testInstrumentationRunnerArguments.class=com.smlnskgmail.jaman.hashcheckerlite.AndroidTestSuite connectedCheck --stacktrace
 
     - name: Send JaCoCo coverage report to Codecov
       uses: codecov/codecov-action@v1
+
+  integration_tests:
+    runs-on: macos-latest
+    env:
+      RELEASE_KEYSTORE_PATH: ${{ secrets.RELEASE_KEYSTORE_PATH }}
+      RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+      RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+      RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v1
+        with:
+          path: ~/.gradle/caches
+          key: caches-${{ runner.os }}-${{ hashFiles('**/*.gradle') }}
+
+      - uses: actions/cache@v1
+        with:
+          path: ~/.gradle/wrapper
+          key: wrapper-${{ runner.os }}-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+
+      - name: Run Instrumentation tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 27
+          profile: Nexus 6
+          script: ./gradlew -Pandroid.testInstrumentationRunnerArguments.class=com.smlnskgmail.jaman.hashcheckerlite.AndroidTestSuite connectedCheck --stacktrace
+
+      - name: Send JaCoCo coverage report to Codecov
+        uses: codecov/codecov-action@v1
