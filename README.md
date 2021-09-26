@@ -1,3 +1,5 @@
+# The app is in the Archive. You can still download it from sources below. You also can download [Original Hash Checker](https://github.com/hash-checker/hash-checker) (it is not in the Archive and still supports).
+
 <img src="media/logo/ic_app.png" height="100px" />
 
 # Hash Checker Lite
